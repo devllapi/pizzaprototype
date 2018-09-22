@@ -15,7 +15,9 @@ public class LemonSqueeze : MonoBehaviour
 
 	public int gameState;
 
-	public Text gameText; 
+	public Text gameText;
+
+	public Text theTime;
 	
 	// Use this for initialization
 	void Start ()
@@ -29,13 +31,14 @@ public class LemonSqueeze : MonoBehaviour
 	{
 		if (gameState == 1)
 		{
-			timer -= Time.time;
+			timer -= Time.deltaTime;
 		} 
 		else if (gameState == 0)
 		{
 			timer = 3;
 		}
 
+		theTime.text = timer.ToString();
 		gameText.text = (gameState.ToString()); 
 
 
