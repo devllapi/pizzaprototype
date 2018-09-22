@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class gameManager : MonoBehaviour {
     public Text combatText;
+    public LemonSqueezeMinigame squeezeScript;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,7 +17,9 @@ public class gameManager : MonoBehaviour {
 
     public void LemonSqueeze()
     {
-        combatText.text= "Lemon Button Pressed";
+        combatText.text= "MASH BUTTONS AND SQUEEZE LEMONS";
+        squeezeScript.gameState = 1;
+        //timer counts down from 3 seconds, then player can select next spell
     }
     public void BreadBash()
     {
