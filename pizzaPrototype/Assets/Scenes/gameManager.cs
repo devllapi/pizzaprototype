@@ -18,4 +18,12 @@ public class gameManager : MonoBehaviour {
     {
         combatText.text= "Lemon Button Pressed";
     }
+    public void BreadBash()
+    {
+        combatText.text = "Bread Button Pressed";
+    }
+    public void OreganoOreganized()
+    {
+        combatText.text = "Oregano Button Pressed";
+    }
 }
