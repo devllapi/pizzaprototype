@@ -16,8 +16,14 @@ public class LemonSqueeze : MonoBehaviour
 	public int gameState;
 
 	public Text gameText;
-
+	public Text lemonPower;
 	public Text theTime;
+
+	private bool R1P;
+	private bool R2P;
+	private bool L1P;
+	private bool L2P;
+	
 	
 	// Use this for initialization
 	void Start ()
@@ -29,102 +35,71 @@ public class LemonSqueeze : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (gameState == 1)
+		lemonPower.text = squeezeCount.ToString();
+		
+		//gamestate 0 is UI navigation. Everything else is a microgame
+		if (gameState != 0)
 		{
 			timer -= Time.deltaTime;
+			
+			if (timer <= 0)
+			{
+				gameState = 0;
+				squeezeCount = 0;
+			}
+
 		} 
 		else if (gameState == 0)
 		{
 			timer = 3;
+			//
+			if (Input.GetButtonDown("joystick button 9"))
+			{
+				squeezeCount = 0;
+				gameState = 1;
+			}
 		}
 
 		theTime.text = timer.ToString();
 		gameText.text = (gameState.ToString()); 
-
-
-
-		Debug.Log(squeezeCount);
-		buttonInputs();
+		
+		lemonSqueezing();
 	}
 
-	//registers all of the button inputs
-	void buttonInputs()
+	//lemon squeezing minigame. 
+	void lemonSqueezing()
 	{
-		if (Input.GetButtonDown("joystick button 1"))
+		//ensure code is only active when the lemon squeeze attack is selected.
+		if (gameState == 1)
 		{
-			Debug.Log("x");
-			squeezeCount += 1;
+			//checks to see which of the shoulder buttons have been pressed.
+			if (Input.GetButtonDown("joystick button 4"))
+			{
+				L1P = true;
+			}
+			if (Input.GetButtonDown("joystick button 5"))
+			{
+				R1P = true;
+			}
+			if (Input.GetButtonDown("joystick button 6"))
+			{
+				L2P = true;
+			}
+			if (Input.GetButtonDown("joystick button 7"))
+			{
+				R2P = true;
+			}
+			
+			if (L1P == true && R1P == true && L2P == true && R2P == true)
+			{
+				squeezeCount += 1;
+				L1P = false;
+				R1P = false;
+				L2P = false;
+				R2P = false;
+			}
+			
 		}
-
-		if (Input.GetButtonDown("joystick button 2"))
-		{
-			Debug.Log("O");
-			squeezeCount += 1;
-		}
-
-		if (Input.GetButtonDown("joystick button 3"))
-		{
-			Debug.Log("T");
-			squeezeCount += 1;
-		}
-
-		if (Input.GetButtonDown( "joystick button 0"))
-		{
-			Debug.Log("S");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 4"))
-		{
-			Debug.Log("L1");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 5"))
-		{
-			Debug.Log("R1");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 6"))
-		{
-			Debug.Log("L2");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 7"))
-		{
-			Debug.Log("R2");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 8"))
-		{
-			Debug.Log("Share");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 9"))
-		{
-			Debug.Log("options");
-			squeezeCount += 1;
-		}
-		if (Input.GetButtonDown( "joystick button 10"))
-		{
-			Debug.Log("L3");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 11"))
-		{
-			Debug.Log("R3");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 13"))
-		{
-			Debug.Log("Touch");
-			squeezeCount += 1;
-		}
+			
 	}
 }
