@@ -28,7 +28,7 @@ public class gameManager : MonoBehaviour {
                 enemyHealthFloat -= 20f;
                 combatText.text = "A zesty strike!";
             }
-            if (squeezeScript.squeezeCount > 10)
+            else if (squeezeScript.squeezeCount > 10)
             {
                 enemyHealthFloat -= 40f;
                 combatText.text = "Wow! They must be feeling pretty sour right now!";

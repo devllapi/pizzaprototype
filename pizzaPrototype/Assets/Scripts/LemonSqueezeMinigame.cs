@@ -41,8 +41,8 @@ public class LemonSqueezeMinigame : MonoBehaviour
 		} 
 		else if (gameState == 0)
 		{
-			timer = 5f;
-            squeezeCount = 0;
+			timer = 3f;
+            //squeezeCount = 0;
            
 		}
 
