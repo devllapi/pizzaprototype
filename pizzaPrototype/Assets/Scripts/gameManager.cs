@@ -22,18 +22,18 @@ public class gameManager : MonoBehaviour {
         enemyHealth.text = enemyHealthFloat.ToString();
         if (squeezeScript.gameState == 0)
         {
-            if (squeezeScript.squeezeCount <= 5) {
-                combatText.text = "NOT ENOUGH LEMONS!";
-            }
-            if(squeezeScript.squeezeCount>5 && squeezeScript.squeezeCount < 10)
+            
+            if(squeezeScript.squeezeCount>10 && squeezeScript.squeezeCount < 15)
             {
                 enemyHealthFloat -= 20f;
                 combatText.text = "A zesty strike!";
             }
             if (squeezeScript.squeezeCount > 10)
             {
-
+                enemyHealthFloat -= 40f;
+                combatText.text = "Wow! They must be feeling pretty sour right now!";
             }
+            squeezeScript.squeezeCount = 0;
         }
 	}
 

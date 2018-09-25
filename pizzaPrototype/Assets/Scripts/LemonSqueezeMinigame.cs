@@ -24,6 +24,7 @@ public class LemonSqueezeMinigame : MonoBehaviour
     private bool L1P;
     private bool L2P;
 
+    public Text squeezedText;
     // Use this for initialization
     void Start ()
 	{
@@ -51,11 +52,12 @@ public class LemonSqueezeMinigame : MonoBehaviour
             timer = 0f;
             gameState = 0;
         }
-		//gameText.text = (gameState.ToString()); 
+        //gameText.text = (gameState.ToString()); 
 
 
 
-		Debug.Log(squeezeCount);
+        squeezedText.text = "Lemons Squeezed:" + squeezeCount.ToString();
+
 		buttonInputs();
 	}
 
