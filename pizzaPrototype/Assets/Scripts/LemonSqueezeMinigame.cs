@@ -18,9 +18,15 @@ public class LemonSqueezeMinigame : MonoBehaviour
 	public Text gameText;
 
 	public Text theTime;
-	
-	// Use this for initialization
-	void Start ()
+
+    private bool R1P;
+    private bool R2P;
+    private bool L1P;
+    private bool L2P;
+
+    public Text squeezedText;
+    // Use this for initialization
+    void Start ()
 	{
 		timer = 3;
 		gameState = 0;
@@ -36,6 +42,8 @@ public class LemonSqueezeMinigame : MonoBehaviour
 		else if (gameState == 0)
 		{
 			timer = 3f;
+            //squeezeCount = 0;
+           
 		}
 
 		theTime.text = timer.ToString();
@@ -44,43 +52,49 @@ public class LemonSqueezeMinigame : MonoBehaviour
             timer = 0f;
             gameState = 0;
         }
-		//gameText.text = (gameState.ToString()); 
+        //gameText.text = (gameState.ToString()); 
 
 
 
-		Debug.Log(squeezeCount);
+        squeezedText.text = "Lemons Squeezed:" + squeezeCount.ToString();
+
 		buttonInputs();
 	}
 
 	//registers all of the button inputs
 	void buttonInputs()
-	{
-		
-		
-		if (Input.GetButtonDown( "joystick button 4"))
-		{
-			Debug.Log("L1");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 5"))
-		{
-			Debug.Log("R1");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 6"))
-		{
-			Debug.Log("L2");
-			squeezeCount += 1;
-		}
-		
-		if (Input.GetButtonDown( "joystick button 7"))
-		{
-			Debug.Log("R2");
-			squeezeCount += 1;
-		}
-		
-	
-	}
+    {
+        //ensure code is only active when the lemon squeeze attack is selected.
+        if (gameState == 1)
+        {
+            //checks to see which of the shoulder buttons have been pressed.
+            if (Input.GetButtonDown("joystick button 4"))
+            {
+                L1P = true;
+            }
+            if (Input.GetButtonDown("joystick button 5"))
+            {
+                R1P = true;
+            }
+            if (Input.GetButtonDown("joystick button 6"))
+            {
+                L2P = true;
+            }
+            if (Input.GetButtonDown("joystick button 7"))
+            {
+                R2P = true;
+            }
+
+            if (L1P == true && R1P == true && L2P == true && R2P == true)
+            {
+                squeezeCount += 1;
+                L1P = false;
+                R1P = false;
+                L2P = false;
+                R2P = false;
+            }
+
+        }
+
+    }
 }
