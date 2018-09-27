@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 128126680}
   - component: {fileID: 128126679}
   - component: {fileID: 128126678}
+  - component: {fileID: 128126681}
   m_Layer: 5
   m_Name: Oregano Button
   m_TagString: Untagged
@@ -236,6 +237,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 128126676}
   m_CullTransparentMesh: 0
+--- !u!114 &128126681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128126676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c63caf688b888c4885d0d5140f0b382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinsDetected: 0
+  quadrant: 0
+  clockwise: 0
 --- !u!1 &225283116
 GameObject:
   m_ObjectHideFlags: 0
