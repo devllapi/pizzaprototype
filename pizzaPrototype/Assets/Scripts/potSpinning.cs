@@ -46,9 +46,7 @@ public class potSpinning : MonoBehaviour
         //gameText.text = (gameState.ToString()); 
 
 
-
-        
-
+       
         SpinSticks();
 
     }
