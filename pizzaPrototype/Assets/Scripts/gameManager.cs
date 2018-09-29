@@ -13,23 +13,37 @@ public class gameManager : MonoBehaviour {
 
     public float enemyHealthFloat;
     public Text enemyHealth;
-	// Use this for initialization
-	void Start () {
+
+    public Text rotationCountText;
+    public Text timerText;
+
+    public Text squeezeCountText;
+    
+    // Use this for initialization
+    void Start () {
         enemyHealthFloat = 100f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         enemyHealth.text = enemyHealthFloat.ToString();
+        if (squeezeScript.gameState == 1)
+        {
+            timerText.text = squeezeScript.timer.ToString() ;
+        }
+        if (stirSauce.gameState == 1)
+        {
+            timerText.text = stirSauce.timer.ToString();
+        }
         if (squeezeScript.gameState == 0)
         {
             
-            if(squeezeScript.squeezeCount>10 && squeezeScript.squeezeCount < 15)
+            if(squeezeScript.squeezeCount>25 && squeezeScript.squeezeCount < 50)
             {
                 enemyHealthFloat -= 20f;
                 combatText.text = "A zesty strike!";
             }
-            else if (squeezeScript.squeezeCount > 10)
+            else if (squeezeScript.squeezeCount > 40)
             {
                 enemyHealthFloat -= 40f;
                 combatText.text = "Wow! They must be feeling pretty sour right now!";
@@ -57,6 +71,8 @@ public class gameManager : MonoBehaviour {
     {
         combatText.text= "MASH BUTTONS AND SQUEEZE LEMONS";
         squeezeScript.gameState = 1;
+
+        
         //timer counts down from 5 seconds, then player can select next spell
     }
     public void OreganoOreganized()
@@ -68,5 +84,7 @@ public class gameManager : MonoBehaviour {
     {
         combatText.text = "STIR THAT SAUCE";
         stirSauce.gameState = 1;
+
+      
     }
 }

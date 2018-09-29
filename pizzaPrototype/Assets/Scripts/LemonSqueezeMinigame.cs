@@ -11,13 +11,13 @@ public class LemonSqueezeMinigame : MonoBehaviour
 
 	public int juicedLemons;
 
-	private float timer;
+	public float timer;
 
 	public int gameState;
 
 	public Text gameText;
 
-	public Text theTime;
+	
 
     private bool R1P;
     private bool R2P;
@@ -25,6 +25,8 @@ public class LemonSqueezeMinigame : MonoBehaviour
     private bool L2P;
 
     public Text squeezedText;
+
+   
     // Use this for initialization
     void Start ()
 	{
@@ -46,7 +48,7 @@ public class LemonSqueezeMinigame : MonoBehaviour
            
 		}
 
-		theTime.text = timer.ToString();
+		
         if (timer <= 0f)
         {
             timer = 0f;
@@ -70,29 +72,22 @@ public class LemonSqueezeMinigame : MonoBehaviour
             //checks to see which of the shoulder buttons have been pressed.
             if (Input.GetButtonDown("joystick button 4"))
             {
-                L1P = true;
+                squeezeCount += 1;
             }
             if (Input.GetButtonDown("joystick button 5"))
             {
-                R1P = true;
-            }
-            if (Input.GetButtonDown("joystick button 6"))
-            {
-                L2P = true;
-            }
-            if (Input.GetButtonDown("joystick button 7"))
-            {
-                R2P = true;
-            }
-
-            if (L1P == true && R1P == true && L2P == true && R2P == true)
-            {
                 squeezeCount += 1;
-                L1P = false;
-                R1P = false;
-                L2P = false;
-                R2P = false;
             }
+            //if (Input.GetButtonDown("joystick button 6"))
+            //{
+            //    squeezeCount += 1;
+            //}
+            //if (Input.GetButtonDown("joystick button 7"))
+            //{
+            //    squeezeCount += 1;
+            //}
+
+           
 
         }
 
