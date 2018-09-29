@@ -58,7 +58,6 @@ public class LemonSqueezeMinigame : MonoBehaviour
 
 
 
-        squeezedText.text = "Lemons Squeezed:" + squeezeCount.ToString();
 
 		buttonInputs();
 	}

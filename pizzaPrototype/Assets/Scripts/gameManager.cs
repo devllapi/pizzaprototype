@@ -21,7 +21,7 @@ public class gameManager : MonoBehaviour {
     public Text timerText;
 
     public Text squeezeCountText;
-
+    public Text spinCountText;
    
     // Use this for initialization
     void Start () {
@@ -31,6 +31,10 @@ public class gameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         enemyHealth.text = "Enemy Health:"+enemyHealthFloat.ToString();
+
+        squeezeCountText.text = "Meat Spell Strength:" + squeezeScript.squeezeCount.ToString();
+        spinCountText.text = "Sauce Spell Strength:" + stirSauce.fullRotation.ToString();
+
         if (squeezeScript.gameState == 1 && stirSauce.gameState==0)
         {
             timerText.text = squeezeScript.timer.ToString();
@@ -39,7 +43,14 @@ public class gameManager : MonoBehaviour {
         {
             timerText.text = stirSauce.timer.ToString();
         }
-        
+        if (squeezeScript.timer <= 0)
+        {
+            timerText.text = "0.0";
+        }
+        if (stirSauce.timer <= 0)
+        {
+            timerText.text = "0.0";
+        }
         if (squeezeScript.gameState == 0)
         {
 
