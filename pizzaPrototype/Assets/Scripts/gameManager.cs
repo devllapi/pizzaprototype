@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class gameManager : MonoBehaviour {
     public Text combatText;
     public LemonSqueezeMinigame squeezeScript;
+    public potSpinning stirSauce;
 
     public Button button1;
     public Button button2;
@@ -35,7 +36,22 @@ public class gameManager : MonoBehaviour {
             }
             squeezeScript.squeezeCount = 0;
         }
-	}
+        if (stirSauce.gameState == 0)
+        {
+
+            if (stirSauce.fullRotation > 10 && stirSauce.fullRotation < 15)
+            {
+                enemyHealthFloat -= 20f;
+                combatText.text = "A zesty strike!";
+            }
+            else if (stirSauce.fullRotation > 10)
+            {
+                enemyHealthFloat -= 40f;
+                combatText.text = "Wow! They must be feeling pretty sour right now!";
+            }
+            stirSauce.fullRotation = 0;
+        }
+    }
 
     public void LemonSqueeze()
     {
@@ -43,14 +59,14 @@ public class gameManager : MonoBehaviour {
         squeezeScript.gameState = 1;
         //timer counts down from 5 seconds, then player can select next spell
     }
-    public void BreadBash()
+    public void OreganoOreganized()
     {
         combatText.text = "Spell not learned!";
         //button2.interactable=false;
     }
-    public void OreganoOreganized()
+    public void PotSpin()
     {
-        combatText.text = "Spell not learned!";
-       // button3.interactable = false;
+        combatText.text = "STIR THAT SAUCE";
+        stirSauce.gameState = 1;
     }
 }

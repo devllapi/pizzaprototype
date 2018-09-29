@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class potSpinning : MonoBehaviour
 {
     Vector2 lastDirection;
@@ -12,10 +12,13 @@ public class potSpinning : MonoBehaviour
 
     public bool clockwise;
     int rotationI;
-    int fullRotation;
+   public int fullRotation;
 
     public int gameState;
     private float timer;
+
+    public Text rotationCountText;
+    public Text timerText;
     // Use this for initialization
     void Start()
     {
@@ -26,6 +29,8 @@ public class potSpinning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rotationCountText.text = "Number of Spins" + fullRotation.ToString();
+        timerText.text = timer.ToString();
         if (gameState == 1)
         {
             timer -= Time.deltaTime;
