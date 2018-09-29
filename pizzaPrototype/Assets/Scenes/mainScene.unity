@@ -626,9 +626,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   squeezeCount: 0
   juicedLemons: 0
+  timer: 0
   gameState: 0
   gameText: {fileID: 1913625161}
-  theTime: {fileID: 1081170786}
   squeezedText: {fileID: 981879307}
 --- !u!1 &547639478
 GameObject:
@@ -665,7 +665,9 @@ MonoBehaviour:
   button3: {fileID: 128126678}
   enemyHealthFloat: 0
   enemyHealth: {fileID: 293448931}
-  menu: {fileID: 245875413}
+  rotationCountText: {fileID: 747785880}
+  timerText: {fileID: 1081170786}
+  squeezeCountText: {fileID: 981879307}
 --- !u!4 &547639480
 Transform:
   m_ObjectHideFlags: 0
@@ -969,8 +971,7 @@ MonoBehaviour:
   clockwise: 0
   fullRotation: 0
   gameState: 0
-  rotationCountText: {fileID: 747785880}
-  timerText: {fileID: 1081170786}
+  timer: 0
 --- !u!1 &981879305
 GameObject:
   m_ObjectHideFlags: 0

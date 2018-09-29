@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 public class gameManager : MonoBehaviour {
     public Text combatText;
     public LemonSqueezeMinigame squeezeScript;
@@ -14,11 +16,13 @@ public class gameManager : MonoBehaviour {
     public float enemyHealthFloat;
     public Text enemyHealth;
 
+  
     public Text rotationCountText;
     public Text timerText;
 
     public Text squeezeCountText;
-    
+
+   
     // Use this for initialization
     void Start () {
         enemyHealthFloat = 100f;
@@ -26,28 +30,33 @@ public class gameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        enemyHealth.text = enemyHealthFloat.ToString();
-        if (squeezeScript.gameState == 1)
+        enemyHealth.text = "Enemy Health:"+enemyHealthFloat.ToString();
+        if (squeezeScript.gameState == 1 && stirSauce.gameState==0)
         {
-            timerText.text = squeezeScript.timer.ToString() ;
+            timerText.text = squeezeScript.timer.ToString();
         }
-        if (stirSauce.gameState == 1)
+        if (stirSauce.gameState == 1 && squeezeScript.gameState==0)
         {
             timerText.text = stirSauce.timer.ToString();
         }
+        
         if (squeezeScript.gameState == 0)
         {
-            
-            if(squeezeScript.squeezeCount>25 && squeezeScript.squeezeCount < 50)
+
+            if (squeezeScript.squeezeCount>20 && squeezeScript.squeezeCount < 30)
             {
                 enemyHealthFloat -= 20f;
-                combatText.text = "A zesty strike!";
+                combatText.text = "A beefy strike!";
             }
-            else if (squeezeScript.squeezeCount > 40)
+            else if (squeezeScript.squeezeCount > 30)
             {
                 enemyHealthFloat -= 40f;
-                combatText.text = "Wow! They must be feeling pretty sour right now!";
-            }
+                combatText.text = "Wow! Well done! Get it? Like...doneness...meat...";
+            }else if (squeezeScript.squeezeCount < 25 && squeezeScript.squeezeCount > 0)
+                {
+                    enemyHealthFloat -= 10f;
+                    combatText.text = "Who are you going to beat if you can't ball some meat?";
+                }
             squeezeScript.squeezeCount = 0;
         }
         if (stirSauce.gameState == 0)
@@ -56,12 +65,17 @@ public class gameManager : MonoBehaviour {
             if (stirSauce.fullRotation > 10 && stirSauce.fullRotation < 15)
             {
                 enemyHealthFloat -= 20f;
-                combatText.text = "A zesty strike!";
+                combatText.text = "A meaty strike!";
             }
-            else if (stirSauce.fullRotation > 10)
+            else if (stirSauce.fullRotation > 15)
             {
                 enemyHealthFloat -= 40f;
                 combatText.text = "Wow! They must be feeling pretty sour right now!";
+            }
+            else if(stirSauce.fullRotation<10 && stirSauce.fullRotation > 0)
+            {
+                enemyHealthFloat -= 10f;
+                combatText.text = "Yikes, I think you may have gotten lost in the sauce.";
             }
             stirSauce.fullRotation = 0;
         }
@@ -69,22 +83,25 @@ public class gameManager : MonoBehaviour {
 
     public void LemonSqueeze()
     {
-        combatText.text= "MASH BUTTONS AND SQUEEZE LEMONS";
+        combatText.text = "MASH BUTTONS TO POUND MEAT!";
         squeezeScript.gameState = 1;
-
+        
+        
+            
         
         //timer counts down from 5 seconds, then player can select next spell
     }
     public void OreganoOreganized()
     {
-        combatText.text = "Spell not learned!";
+        //combatText.text = "Spell not learned!";
         //button2.interactable=false;
     }
     public void PotSpin()
     {
         combatText.text = "STIR THAT SAUCE";
         stirSauce.gameState = 1;
-
+        
       
     }
 }
+
