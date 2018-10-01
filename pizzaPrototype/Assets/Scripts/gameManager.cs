@@ -8,6 +8,8 @@ public class gameManager : MonoBehaviour {
     public Text combatText;
     public LemonSqueezeMinigame squeezeScript;
     public potSpinning stirSauce;
+    public OreganoCircle oCircles;
+    public OreganoStun oBar;
 
     public Button button1;
     public Button button2;
@@ -97,21 +99,18 @@ public class gameManager : MonoBehaviour {
         combatText.text = "MASH BUTTONS TO POUND MEAT!";
         squeezeScript.gameState = 1;
         
-        
-            
-        
         //timer counts down from 5 seconds, then player can select next spell
     }
-    public void OreganoOreganized()
+    public void OreganoButtonPress()
     {
-        //combatText.text = "Spell not learned!";
-        //button2.interactable=false;
+        oCircles.gameState = 1;
+        oBar.gameState = 1;
     }
+    
     public void PotSpin()
     {
         combatText.text = "STIR THAT SAUCE";
         stirSauce.gameState = 1;
-        
       
     }
 }
