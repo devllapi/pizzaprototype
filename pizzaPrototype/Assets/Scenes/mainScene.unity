@@ -124,6 +124,8 @@ GameObject:
   - component: {fileID: 128126680}
   - component: {fileID: 128126679}
   - component: {fileID: 128126678}
+  - component: {fileID: 128126682}
+  - component: {fileID: 128126681}
   m_Layer: 5
   m_Name: Oregano Button
   m_TagString: Untagged
@@ -190,7 +192,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 547639479}
-        m_MethodName: OreganoOreganized
+        m_MethodName: OreganoButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -236,6 +238,39 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 128126676}
   m_CullTransparentMesh: 0
+--- !u!114 &128126681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128126676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ea86928e5f001418f930576e5de9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  butAct: 0
+  butDead: 0
+  butResult: 0
+  neutralCirc: {fileID: 0}
+  check: {fileID: 0}
+  fail: {fileID: 0}
+  gameState: 0
+--- !u!114 &128126682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128126676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a19d8c960bf3a14890b6acbcee59f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 100
+  curTime: 0
+  Bar: {fileID: 0}
+  gameState: 0
 --- !u!1 &225283116
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,6 +695,8 @@ MonoBehaviour:
   combatText: {fileID: 1913625161}
   squeezeScript: {fileID: 398247740}
   stirSauce: {fileID: 919994381}
+  oCircles: {fileID: 128126681}
+  oBar: {fileID: 128126682}
   button1: {fileID: 398247737}
   button2: {fileID: 919994378}
   button3: {fileID: 128126678}
