@@ -24,7 +24,14 @@ public class gameManager : MonoBehaviour {
 
     public Text squeezeCountText;
     public Text spinCountText;
-   
+
+    int ultimateInt;
+    bool ultimateCheck;
+
+    int meatInt;
+    int sauceInt;
+
+    public AudioSource ultimateMoveSound;
     // Use this for initialization
     void Start () {
         enemyHealthFloat = 100f;
@@ -91,6 +98,15 @@ public class gameManager : MonoBehaviour {
                 combatText.text = "Yikes, I think you may have gotten lost in the sauce.";
             }
             stirSauce.fullRotation = 0;
+
+            if (ultimateInt == 2)
+            {
+                combatText.text = "Finishing Move! Meatballistic Missile!";
+                enemyHealthFloat -= 75f;
+                ultimateMoveSound.Play();
+                ultimateInt = 0;
+
+            }
         }
     }
 
@@ -98,20 +114,29 @@ public class gameManager : MonoBehaviour {
     {
         combatText.text = "MASH BUTTONS TO POUND MEAT!";
         squeezeScript.gameState = 1;
-        
+        if (meatInt != 1)
+        {
+            ultimateInt += 1;
+        }
+        meatInt += 1;
         //timer counts down from 5 seconds, then player can select next spell
     }
     public void OreganoButtonPress()
     {
         oCircles.gameState = 1;
         oBar.gameState = 1;
+        
     }
     
     public void PotSpin()
     {
         combatText.text = "STIR THAT SAUCE";
         stirSauce.gameState = 1;
-      
+        if (sauceInt != 1)
+        {
+            ultimateInt += 1;
+        }
+        sauceInt += 1;
     }
 }
 
