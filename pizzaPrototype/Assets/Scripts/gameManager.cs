@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class gameManager : MonoBehaviour {
+
+    public static gameManager gm;
+
+    [Header ("Text")]
     public Text combatText;
     public LemonSqueezeMinigame squeezeScript;
     public potSpinning stirSauce;
@@ -31,10 +35,12 @@ public class gameManager : MonoBehaviour {
     int meatInt;
     int sauceInt;
 
+    public GameObject hideUI;
     public AudioSource ultimateMoveSound;
     // Use this for initialization
     void Start () {
         enemyHealthFloat = 100f;
+        gm = this;
 	}
 	
 	// Update is called once per frame
@@ -114,6 +120,7 @@ public class gameManager : MonoBehaviour {
     {
         combatText.text = "MASH BUTTONS TO POUND MEAT!";
         squeezeScript.gameState = 1;
+        hideUI.SetActive(false);
         if (meatInt != 1)
         {
             ultimateInt += 1;
@@ -137,6 +144,12 @@ public class gameManager : MonoBehaviour {
             ultimateInt += 1;
         }
         sauceInt += 1;
+    }
+
+    //This reatives the menu ui after a minigame
+    public void reactiveUI()
+    {
+        hideUI.SetActive(true);
     }
 }
 
