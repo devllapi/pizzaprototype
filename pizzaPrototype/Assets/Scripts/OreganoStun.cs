@@ -37,7 +37,11 @@ public class OreganoStun : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-
+		if (Bar.fillAmount >= .99f)
+		{
+			Bar.fillAmount = 0;
+			//Bar.gameObject.SetActive(false);
+		}
 	}
 
 	void increaseTime()
@@ -62,7 +66,7 @@ public class OreganoStun : MonoBehaviour
 		}
 		else
 		{
-			gameState = 0;
+			gameState = 1;
 		}
 	}
 }

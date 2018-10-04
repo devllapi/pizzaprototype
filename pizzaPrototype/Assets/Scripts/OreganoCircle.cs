@@ -13,6 +13,7 @@ public class OreganoCircle : MonoBehaviour
 	public int butResult = 0;
 
 	private int inputCount = 3;
+	public int correctInputs;
 
 	public Image neutralCirc;
 	public Sprite check;
@@ -52,6 +53,7 @@ public class OreganoCircle : MonoBehaviour
 			{
 				butResult = 1;
 				neutralCirc.sprite = check;
+				correctInputs += 1; 
 			}
 	
 			Debug.Log("Butt: " + butDead);
