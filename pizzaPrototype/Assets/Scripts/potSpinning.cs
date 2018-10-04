@@ -45,6 +45,7 @@ public class potSpinning : MonoBehaviour
         {
             timer = 0f;
             gameState = 0;
+            gameManager.gm.reactiveUI();
         }
         //gameText.text = (gameState.ToString()); 
 

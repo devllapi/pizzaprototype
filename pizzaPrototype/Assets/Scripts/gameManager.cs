@@ -139,6 +139,7 @@ public class gameManager : MonoBehaviour {
     {
         combatText.text = "STIR THAT SAUCE";
         stirSauce.gameState = 1;
+        hideUI.SetActive(false);
         if (sauceInt != 1)
         {
             ultimateInt += 1;
