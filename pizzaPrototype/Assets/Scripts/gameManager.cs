@@ -40,6 +40,10 @@ public class gameManager : MonoBehaviour {
 
     public GameObject hideUI;
     public AudioSource ultimateMoveSound;
+
+
+
+    
     // Use this for initialization
     void Start () {
         enemyHealthFloat = 100f;
