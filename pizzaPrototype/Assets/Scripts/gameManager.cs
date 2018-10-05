@@ -15,6 +15,13 @@ public class gameManager : MonoBehaviour {
     public OreganoCircle oCircles;
     public OreganoStun oBar;
 
+    public Text rotationCountText;
+    public Text timerText;
+
+    public Text squeezeCountText;
+    public Text spinCountText;
+
+    [Header("UI Buttons")]
     public Button button1;
     public Button button2;
     public Button button3;
@@ -22,22 +29,21 @@ public class gameManager : MonoBehaviour {
     public float enemyHealthFloat;
     public Text enemyHealth;
 
-  
-    public Text rotationCountText;
-    public Text timerText;
 
-    public Text squeezeCountText;
-    public Text spinCountText;
-
+    
     int ultimateInt;
     bool ultimateCheck;
 
     int meatInt;
     int sauceInt;
 
+    [Header("Player Variables")]
     public GameObject hideUI;
     public AudioSource ultimateMoveSound;
+    public Image playerHealthBar;
+    public player p;
 
+    
 
 
     
@@ -49,6 +55,8 @@ public class gameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        playerHealthBar.fillAmount = p.health / p.maxHealth;//what affects the player health bar
+        
         enemyHealth.text = "Enemy Health:"+enemyHealthFloat.ToString();
 
         squeezeCountText.text = "Meat Spell Strength:" + squeezeScript.squeezeCount.ToString();

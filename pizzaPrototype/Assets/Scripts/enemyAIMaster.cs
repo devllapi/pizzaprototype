@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class enemyAIMaster : MonoBehaviour {
-    public int enemyHealth;
-    int whoseTurn;
+    
+    int whoseTurn;//determines who is performing actions
 
-    public enemy[] enemyList;
-    public int playerSelect;
-    public GameObject enemyPrefab;
+    public enemy[] enemyList;//generates an array based on the enemy superclass
+    public int playerSelect;//an int attached to the number of enemies that there are
+    bool canISelectThings;
+    public GameObject enemyPrefab;//what we are instantiating
 
     // Use this for initialization
     void Start () {
 
         generateEnemies(1, 3);
 
-        enemyList[playerSelect].health -= 40;
+        //enemyList[playerSelect].health -= 40; <this is how we affect an enemies health>
         if(playerSelect >= enemyList.Length)
         {
             playerSelect = 0;
@@ -29,7 +30,10 @@ public class enemyAIMaster : MonoBehaviour {
 	void Update () {
         if (whoseTurn == 0)
         {
+            
+
             //players turn
+            //enemyList[playerSelect].takeDamage(10);
         }
         if (whoseTurn == 1)
         {
