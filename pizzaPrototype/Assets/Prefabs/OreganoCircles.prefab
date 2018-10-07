@@ -117,8 +117,12 @@ MonoBehaviour:
   butAct: 0
   butDead: 0
   butResult: 0
+  correctInputs: 0
+  neutralCirc: {fileID: 0}
   check: {fileID: 21300000, guid: f5ee6a4ec23e3934eab65d4e7fc0dde6, type: 3}
   fail: {fileID: 21300000, guid: f5d7f02f9e9567240a8fdcb2c49f0143, type: 3}
+  neutralityCircle: {fileID: 21300000, guid: 019f9dcebcf7309488ebfa5e4332296d, type: 3}
+  gameState: 1
 --- !u!222 &222158692842770502
 CanvasRenderer:
   m_ObjectHideFlags: 1
