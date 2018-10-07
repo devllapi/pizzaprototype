@@ -62,6 +62,8 @@ public class gameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	    
+        playerHealthBar.fillAmount = p.health / p.maxHealth;//what affects the player health bar
+        
         enemyHealth.text = "Enemy Health:"+enemyHealthFloat.ToString();
 
         squeezeCountText.text = "Meat Spell Strength:" + squeezeScript.squeezeCount.ToString();
