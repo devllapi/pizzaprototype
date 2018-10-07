@@ -33,8 +33,7 @@ public class gameManager : MonoBehaviour {
 
     public GameObject oreganoShit;
   
-    public Text rotationCountText;
-    public Text timerText;
+   
 
     
     int ultimateInt;
