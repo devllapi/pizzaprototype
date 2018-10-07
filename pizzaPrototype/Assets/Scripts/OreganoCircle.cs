@@ -18,6 +18,7 @@ public class OreganoCircle : MonoBehaviour
 	public Image neutralCirc;
 	public Sprite check;
 	public Sprite fail;
+	public Sprite neutralityCircle;
 
 	public int gameState;
 	
@@ -34,9 +35,6 @@ public class OreganoCircle : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (gameState == 1)
-		{
-
 			//ensures that the already activated buttons won't be reactivated when the bar passes over the other buttons
 			if (butDead == true)
 			{
@@ -46,7 +44,7 @@ public class OreganoCircle : MonoBehaviour
 			if (Input.GetButtonDown("joystick button 1"))
 			{
 				inputCount -= 1;
-				Debug.Log(inputCount);
+				//Debug.Log(inputCount);
 			}
 	
 			if (butAct == true && Input.GetButtonDown("joystick button 1") && inputCount >= 0)
@@ -63,18 +61,19 @@ public class OreganoCircle : MonoBehaviour
 				Debug.Log(butAct);
 				//Debug.Log(butDead);
 			}
-	}
-
-}
+		}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "OreganoBar")
 		{	
 			butAct = true;
+			Debug.Log("colliding!");
 		}
+		
 	}
 
+	//sets the amount of the time each button is active
 	private IEnumerator ActiveFrames()
 	{
 		//.8 seconds (the amount of time the bar spends in each button) is equal to 48 frames.
@@ -90,5 +89,14 @@ public class OreganoCircle : MonoBehaviour
 		butDead = true;
 	}
 
-	
+	public void Reset()
+	{
+		butAct = false;
+		butDead = false;
+		neutralCirc.sprite = neutralityCircle;
+		inputCount = 3;
+		butResult = 0;
+	}
+
+
 }

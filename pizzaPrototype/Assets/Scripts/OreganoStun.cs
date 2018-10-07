@@ -18,7 +18,7 @@ public class OreganoStun : MonoBehaviour
 	public int gameState;
 
 	// Use this for initialization
-	void Start ()
+	private void OnEnable()	
 	{
 		if (gameState == 1)
 		{
@@ -31,16 +31,6 @@ public class OreganoStun : MonoBehaviour
 			curTime = 0f;
 			//at the start of script, 
 			InvokeRepeating("increaseTime", 0f, 0.03f);
-		}
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		if (Bar.fillAmount >= .99f)
-		{
-			Bar.fillAmount = 0;
-			//Bar.gameObject.SetActive(false);
 		}
 	}
 
@@ -60,7 +50,7 @@ public class OreganoStun : MonoBehaviour
 		Bar.fillAmount = theTime;
 		//this make's the bar's boxCollider larger over time. 304 is an arbitrary number that happens to have
 		//the collider scale with the bar. There's a more optimal way to write this, but idk what it is.
-		if (Bar.fillAmount != 1)
+		if (Bar.fillAmount < 1f)
 		{
 			barCollider.size = new Vector3(theTime * 304, 1, -1);
 		}

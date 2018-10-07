@@ -126,8 +126,19 @@ public class gameManager : MonoBehaviour {
 	    if (oBar.Bar.fillAmount >= .99f)
 	    {
 	        oBar.Bar.fillAmount = 0;
+	        //we must cancel the invoke, because it will continue to invoke even after the object is deactivated 
+	        oBar.CancelInvoke();
+	        
+	        OreganoCircle[] circles = oreganoShit.GetComponentsInChildren<OreganoCircle>();
+	        Debug.Log(circles.Length);
+
+	        foreach (OreganoCircle c in circles) 
+	        {
+	            c.Reset();
+	            Debug.Log(c.butDead);
+	        }
+	        //oCircles.Reset();
 	        oreganoShit.gameObject.SetActive(false);
-	        //Bar.gameObject.SetActive(false);
 	    }
     }
 
@@ -146,8 +157,6 @@ public class gameManager : MonoBehaviour {
     public void OreganoButtonPress()
     {
         oreganoShit.gameObject.SetActive(true);
-       
-        
     }
     
     public void PotSpin()
