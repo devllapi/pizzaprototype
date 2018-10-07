@@ -14,6 +14,8 @@ public class gameManager : MonoBehaviour {
     public potSpinning stirSauce;
     public OreganoCircle oCircles;
     public OreganoStun oBar;
+    
+    
 
     public Button button1;
     public Button button2;
@@ -22,6 +24,7 @@ public class gameManager : MonoBehaviour {
     public float enemyHealthFloat;
     public Text enemyHealth;
 
+    public GameObject oreganoShit;
   
     public Text rotationCountText;
     public Text timerText;
@@ -49,6 +52,7 @@ public class gameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	    
         enemyHealth.text = "Enemy Health:"+enemyHealthFloat.ToString();
 
         squeezeCountText.text = "Meat Spell Strength:" + squeezeScript.squeezeCount.ToString();
@@ -118,6 +122,24 @@ public class gameManager : MonoBehaviour {
 
             }
         }
+	    
+	    if (oBar.Bar.fillAmount >= .99f)
+	    {
+	        oBar.Bar.fillAmount = 0;
+	        //we must cancel the invoke, because it will continue to invoke even after the object is deactivated 
+	        oBar.CancelInvoke();
+	        
+	        OreganoCircle[] circles = oreganoShit.GetComponentsInChildren<OreganoCircle>();
+	        Debug.Log(circles.Length);
+
+	        foreach (OreganoCircle c in circles) 
+	        {
+	            c.Reset();
+	            Debug.Log(c.butDead);
+	        }
+	        //oCircles.Reset();
+	        oreganoShit.gameObject.SetActive(false);
+	    }
     }
 
     public void LemonSqueeze()
@@ -134,9 +156,7 @@ public class gameManager : MonoBehaviour {
     }
     public void OreganoButtonPress()
     {
-        oCircles.gameState = 1;
-        oBar.gameState = 1;
-        
+        oreganoShit.gameObject.SetActive(true);
     }
     
     public void PotSpin()
