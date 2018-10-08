@@ -10,50 +10,57 @@ public class gameManager : MonoBehaviour {
 
     [Header ("Text")]
     public Text combatText;
+
+    [Header ("Minigames")]
     public LemonSqueezeMinigame squeezeScript;
     public potSpinning stirSauce;
     public OreganoCircle oCircles;
     public OreganoStun oBar;
-    
-    
+    public GameObject oreganoHolder;
 
-    public Button button1;
-    public Button button2;
-    public Button button3;
 
-    public float enemyHealthFloat;
-    public Text enemyHealth;
-
-    public GameObject oreganoShit;
-  
     public Text rotationCountText;
     public Text timerText;
 
     public Text squeezeCountText;
     public Text spinCountText;
 
+    [Header("UI Buttons")]
+    public Button button1;
+    public Button button2;
+    public Button button3;
+
+
+   
+  
     int ultimateInt;
     bool ultimateCheck;
 
     int meatInt;
     int sauceInt;
 
+    [Header("Player Variables")]
     public GameObject hideUI;
     public AudioSource ultimateMoveSound;
+    public Image playerHealthBar;
+    public player p;
 
+    
 
 
     
     // Use this for initialization
     void Start () {
-        enemyHealthFloat = 100f;
         gm = this;
+        hideUI.SetActive(false);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	    
-        enemyHealth.text = "Enemy Health:"+enemyHealthFloat.ToString();
+        playerHealthBar.fillAmount = p.health / p.maxHealth;//what affects the player health bar
+        
 
         squeezeCountText.text = "Meat Spell Strength:" + squeezeScript.squeezeCount.ToString();
         spinCountText.text = "Sauce Spell Strength:" + stirSauce.fullRotation.ToString();
@@ -74,54 +81,54 @@ public class gameManager : MonoBehaviour {
         {
             timerText.text = "0.0";
         }
-        if (squeezeScript.gameState == 0)
-        {
+        //if (squeezeScript.gameState == 0)
+        //{
 
-            if (squeezeScript.squeezeCount>20 && squeezeScript.squeezeCount < 30)
-            {
-                enemyHealthFloat -= 20f;
-                combatText.text = "A beefy strike!";
-            }
-            else if (squeezeScript.squeezeCount > 30)
-            {
-                enemyHealthFloat -= 40f;
-                combatText.text = "Wow! Well done! Get it? Like...doneness...meat...";
-            }else if (squeezeScript.squeezeCount < 25 && squeezeScript.squeezeCount > 0)
-                {
-                    enemyHealthFloat -= 10f;
-                    combatText.text = "Who are you going to beat if you can't ball some meat?";
-                }
-            squeezeScript.squeezeCount = 0;
-        }
-        if (stirSauce.gameState == 0)
-        {
+        //    if (squeezeScript.squeezeCount>20 && squeezeScript.squeezeCount < 30)
+        //    {
+        //        enemyHealthFloat -= 20f;
+        //        combatText.text = "A beefy strike!";
+        //    }
+        //    else if (squeezeScript.squeezeCount > 30)
+        //    {
+        //        enemyHealthFloat -= 40f;
+        //        combatText.text = "Wow! Well done! Get it? Like...doneness...meat...";
+        //    }else if (squeezeScript.squeezeCount < 25 && squeezeScript.squeezeCount > 0)
+        //        {
+        //            enemyHealthFloat -= 10f;
+        //            combatText.text = "Who are you going to beat if you can't ball some meat?";
+        //        }
+        //    squeezeScript.squeezeCount = 0;
+        //}
+        //if (stirSauce.gameState == 0)
+        //{
 
-            if (stirSauce.fullRotation > 10 && stirSauce.fullRotation < 15)
-            {
-                enemyHealthFloat -= 20f;
-                combatText.text = "A meaty strike!";
-            }
-            else if (stirSauce.fullRotation > 15)
-            {
-                enemyHealthFloat -= 40f;
-                combatText.text = "Wow! They must be feeling pretty sour right now!";
-            }
-            else if(stirSauce.fullRotation<10 && stirSauce.fullRotation > 0)
-            {
-                enemyHealthFloat -= 10f;
-                combatText.text = "Yikes, I think you may have gotten lost in the sauce.";
-            }
-            stirSauce.fullRotation = 0;
+        //    if (stirSauce.fullRotation > 10 && stirSauce.fullRotation < 15)
+        //    {
+        //        enemyHealthFloat -= 20f;
+        //        combatText.text = "A meaty strike!";
+        //    }
+        //    else if (stirSauce.fullRotation > 15)
+        //    {
+        //        enemyHealthFloat -= 40f;
+        //        combatText.text = "Wow! They must be feeling pretty sour right now!";
+        //    }
+        //    else if(stirSauce.fullRotation<10 && stirSauce.fullRotation > 0)
+        //    {
+        //        enemyHealthFloat -= 10f;
+        //        combatText.text = "Yikes, I think you may have gotten lost in the sauce.";
+        //    }
+        //    stirSauce.fullRotation = 0;
 
-            if (ultimateInt == 2)
-            {
-                combatText.text = "Finishing Move! Meatballistic Missile!";
-                enemyHealthFloat -= 75f;
-                ultimateMoveSound.Play();
-                ultimateInt = 0;
+        //    if (ultimateInt == 2)
+        //    {
+        //        combatText.text = "Finishing Move! Meatballistic Missile!";
+        //        enemyHealthFloat -= 75f;
+        //        ultimateMoveSound.Play();
+        //        ultimateInt = 0;
 
-            }
-        }
+        //    }
+        //}
 	    
 	    if (oBar.Bar.fillAmount >= .99f)
 	    {
@@ -129,7 +136,7 @@ public class gameManager : MonoBehaviour {
 	        //we must cancel the invoke, because it will continue to invoke even after the object is deactivated 
 	        oBar.CancelInvoke();
 	        
-	        OreganoCircle[] circles = oreganoShit.GetComponentsInChildren<OreganoCircle>();
+	        OreganoCircle[] circles = oreganoHolder.GetComponentsInChildren<OreganoCircle>();
 	        Debug.Log(circles.Length);
 
 	        foreach (OreganoCircle c in circles) 
@@ -138,7 +145,7 @@ public class gameManager : MonoBehaviour {
 	            Debug.Log(c.butDead);
 	        }
 	        //oCircles.Reset();
-	        oreganoShit.gameObject.SetActive(false);
+	        oreganoHolder.gameObject.SetActive(false);
 	    }
     }
 
@@ -156,7 +163,7 @@ public class gameManager : MonoBehaviour {
     }
     public void OreganoButtonPress()
     {
-        oreganoShit.gameObject.SetActive(true);
+        oreganoHolder.gameObject.SetActive(true);
     }
     
     public void PotSpin()

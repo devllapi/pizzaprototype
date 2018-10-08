@@ -52,7 +52,7 @@ public class OreganoStun : MonoBehaviour
 		//the collider scale with the bar. There's a more optimal way to write this, but idk what it is.
 		if (Bar.fillAmount < 1f)
 		{
-			barCollider.size = new Vector3(theTime * 304, 1, -1);
+			barCollider.size = new Vector3(theTime * 17, 1, -1);
 		}
 		else
 		{
