@@ -12,7 +12,6 @@ public abstract class enemy : MonoBehaviour {
     public GameObject glowObj;
 
     public Image enemyHealthBar;
-    public Image enemyManaBar;
 
     public abstract void attack();
     

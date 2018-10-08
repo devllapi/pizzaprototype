@@ -9,11 +9,11 @@ public class enemyChef : enemy
         health = 100;
         maxHealth = 100;
         mana = 50;
+        glowObj.SetActive(false);
     }
     void Update()
     {
         enemyHealthBar.fillAmount = health / maxHealth;
-        enemyManaBar.fillAmount = mana / maxMana;
     }
     public override void attack()
     {

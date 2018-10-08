@@ -28,13 +28,15 @@ public class enemyAIMaster : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (whoseTurn == 0)
+        if (whoseTurn == 0)//players turn
         {
             canISelectThings = true;
+            print(canISelectThings);
             if (canISelectThings == true)
             {
                 gameManager.gm.hideUI.SetActive(false);
                 selectTarget();
+                enemyList[playerSelect].glowObj.SetActive(true);
             }
             //players turn
             //enemyList[playerSelect].takeDamage(10);
@@ -98,10 +100,10 @@ public class enemyAIMaster : MonoBehaviour {
     public void selectTarget()
     {
         playerSelect = 0;
-        if (Input.GetAxisRaw("Horizantal")>0)
+        if (Input.GetAxisRaw("Horizontal")>0)
         {
             playerSelect += 1;
-        }else if (Input.GetAxis("Horizantal") < 0)
+        }else if (Input.GetAxis("Horizontal") < 0)
         {
             playerSelect -= 1;
         }
@@ -115,7 +117,7 @@ public class enemyAIMaster : MonoBehaviour {
             playerSelect = enemyList.Length - 1;
         }
 
-        if (Input.GetKeyDown("Submit"))
+        if (Input.GetButtonDown("Submit"))
         {
             canISelectThings = false;
             gameManager.gm.reactiveUI();

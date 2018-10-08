@@ -10,12 +10,14 @@ public class gameManager : MonoBehaviour {
 
     [Header ("Text")]
     public Text combatText;
+
+    [Header ("Minigames")]
     public LemonSqueezeMinigame squeezeScript;
     public potSpinning stirSauce;
     public OreganoCircle oCircles;
     public OreganoStun oBar;
-    
-    
+    public GameObject oreganoHolder;
+
 
     public Text rotationCountText;
     public Text timerText;
@@ -28,14 +30,9 @@ public class gameManager : MonoBehaviour {
     public Button button2;
     public Button button3;
 
-    public float enemyHealthFloat;
-    public Text enemyHealth;
 
-    public GameObject oreganoShit;
-  
    
-
-    
+  
     int ultimateInt;
     bool ultimateCheck;
 
@@ -54,8 +51,9 @@ public class gameManager : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-        enemyHealthFloat = 100f;
         gm = this;
+        hideUI.SetActive(false);
+
 	}
 	
 	// Update is called once per frame
@@ -63,7 +61,6 @@ public class gameManager : MonoBehaviour {
 	    
         playerHealthBar.fillAmount = p.health / p.maxHealth;//what affects the player health bar
         
-        enemyHealth.text = "Enemy Health:"+enemyHealthFloat.ToString();
 
         squeezeCountText.text = "Meat Spell Strength:" + squeezeScript.squeezeCount.ToString();
         spinCountText.text = "Sauce Spell Strength:" + stirSauce.fullRotation.ToString();
@@ -139,7 +136,7 @@ public class gameManager : MonoBehaviour {
 	        //we must cancel the invoke, because it will continue to invoke even after the object is deactivated 
 	        oBar.CancelInvoke();
 	        
-	        OreganoCircle[] circles = oreganoShit.GetComponentsInChildren<OreganoCircle>();
+	        OreganoCircle[] circles = oreganoHolder.GetComponentsInChildren<OreganoCircle>();
 	        Debug.Log(circles.Length);
 
 	        foreach (OreganoCircle c in circles) 
@@ -148,7 +145,7 @@ public class gameManager : MonoBehaviour {
 	            Debug.Log(c.butDead);
 	        }
 	        //oCircles.Reset();
-	        oreganoShit.gameObject.SetActive(false);
+	        oreganoHolder.gameObject.SetActive(false);
 	    }
     }
 
@@ -166,7 +163,7 @@ public class gameManager : MonoBehaviour {
     }
     public void OreganoButtonPress()
     {
-        oreganoShit.gameObject.SetActive(true);
+        oreganoHolder.gameObject.SetActive(true);
     }
     
     public void PotSpin()
