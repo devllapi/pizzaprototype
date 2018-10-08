@@ -897,6 +897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec154ddea3d8a0949a63da830d3a2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ai: {fileID: 1328801195}
   combatText: {fileID: 1913625161}
   squeezeScript: {fileID: 1366670027}
   stirSauce: {fileID: 1366670029}
@@ -910,7 +911,6 @@ MonoBehaviour:
   button1: {fileID: 398247737}
   button2: {fileID: 919994378}
   button3: {fileID: 128126678}
-  hideUI: {fileID: 1401331779}
   ultimateMoveSound: {fileID: 547639481}
   playerHealthBar: {fileID: 1129612220}
   p: {fileID: 822185921}
@@ -925,7 +925,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &547639481
 AudioSource:
@@ -1995,7 +1995,13 @@ MonoBehaviour:
     type: 2}
   tenderizerScript: {fileID: 1366670027}
   stirSauce: {fileID: 1366670029}
+  oCircles: {fileID: 2002320446}
+  oBar: {fileID: 1396374652}
+  oreganoHolder: {fileID: 1749484052}
+  hideUI: {fileID: 1401331779}
   enemyHealthBar: {fileID: 1839326985}
+  combatState: 0
+  activeMinigame: 0
 --- !u!224 &1328801196
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2059,7 +2065,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1366670029
 MonoBehaviour:
@@ -2340,7 +2346,7 @@ Transform:
   m_LocalScale: {x: 0.370162, y: 0.370162, z: 0.370162}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1730237972
 Prefab:
