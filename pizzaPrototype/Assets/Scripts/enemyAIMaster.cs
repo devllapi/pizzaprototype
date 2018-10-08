@@ -113,6 +113,7 @@ public class enemyAIMaster : MonoBehaviour
                     stirSauce.fullRotation = 0;
                     gameManager.gm.stirringGame = false;
                     combatState = CombatState.enemyTurn;
+                    minigameActive = false;
                 }
 
                 break;
@@ -188,10 +189,12 @@ public class enemyAIMaster : MonoBehaviour
     }
     public void EnemyAttackPattern()
     {
+        print("IM ATTACKING");
         for (int i = 0; i < enemyList.Length; i++)
         {
-            if (Random.Range(0, 1) > 0.5f)
+            if (Random.Range(0f, 2f) > 0.01f)
             {
+                print("HERE COMES THE PAIN");
                 enemyList[i].attack();
             }
             else

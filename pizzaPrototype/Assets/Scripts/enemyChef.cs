@@ -51,7 +51,8 @@ public class enemyChef : enemy
     }
     public void normAttack()
     {
-        gameManager.gm.p.health -= (int)Random.Range(10, 13);
+        print("IM REALLY LAYING THE HURT");
+        gameManager.gm.p.health -= (int)Random.Range(10, 15);
     }
 
 

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class player : MonoBehaviour {
     //player attributes go here
-    public int health;
-    public int maxHealth;
-    public int mana;
+    public float health;
+    public float maxHealth;
+    public float mana;
 
 	// Use this for initialization
 	void Start () {

@@ -47,16 +47,11 @@ public class gameManager : MonoBehaviour {
     public AudioSource ultimateMoveSound;
     public Image playerHealthBar;
     public player p;
-
-    
-
-
     
     // Use this for initialization
     void Start () {
         gm = this;
-        
-
+      
 	}
 	
 	// Update is called once per frame
@@ -127,6 +122,7 @@ public class gameManager : MonoBehaviour {
     
     public void PotSpin()
     {
+        stirringGame = true;
         ai.combatState = enemyAIMaster.CombatState.minigame;
         combatText.text = "STIR THAT SAUCE";
         stirSauce.gameState = 1;
