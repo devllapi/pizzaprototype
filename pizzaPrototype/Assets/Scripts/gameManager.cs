@@ -84,54 +84,54 @@ public class gameManager : MonoBehaviour {
         {
             timerText.text = "0.0";
         }
-        if (squeezeScript.gameState == 0)
-        {
+        //if (squeezeScript.gameState == 0)
+        //{
 
-            if (squeezeScript.squeezeCount>20 && squeezeScript.squeezeCount < 30)
-            {
-                enemyHealthFloat -= 20f;
-                combatText.text = "A beefy strike!";
-            }
-            else if (squeezeScript.squeezeCount > 30)
-            {
-                enemyHealthFloat -= 40f;
-                combatText.text = "Wow! Well done! Get it? Like...doneness...meat...";
-            }else if (squeezeScript.squeezeCount < 25 && squeezeScript.squeezeCount > 0)
-                {
-                    enemyHealthFloat -= 10f;
-                    combatText.text = "Who are you going to beat if you can't ball some meat?";
-                }
-            squeezeScript.squeezeCount = 0;
-        }
-        if (stirSauce.gameState == 0)
-        {
+        //    if (squeezeScript.squeezeCount>20 && squeezeScript.squeezeCount < 30)
+        //    {
+        //        enemyHealthFloat -= 20f;
+        //        combatText.text = "A beefy strike!";
+        //    }
+        //    else if (squeezeScript.squeezeCount > 30)
+        //    {
+        //        enemyHealthFloat -= 40f;
+        //        combatText.text = "Wow! Well done! Get it? Like...doneness...meat...";
+        //    }else if (squeezeScript.squeezeCount < 25 && squeezeScript.squeezeCount > 0)
+        //        {
+        //            enemyHealthFloat -= 10f;
+        //            combatText.text = "Who are you going to beat if you can't ball some meat?";
+        //        }
+        //    squeezeScript.squeezeCount = 0;
+        //}
+        //if (stirSauce.gameState == 0)
+        //{
 
-            if (stirSauce.fullRotation > 10 && stirSauce.fullRotation < 15)
-            {
-                enemyHealthFloat -= 20f;
-                combatText.text = "A meaty strike!";
-            }
-            else if (stirSauce.fullRotation > 15)
-            {
-                enemyHealthFloat -= 40f;
-                combatText.text = "Wow! They must be feeling pretty sour right now!";
-            }
-            else if(stirSauce.fullRotation<10 && stirSauce.fullRotation > 0)
-            {
-                enemyHealthFloat -= 10f;
-                combatText.text = "Yikes, I think you may have gotten lost in the sauce.";
-            }
-            stirSauce.fullRotation = 0;
+        //    if (stirSauce.fullRotation > 10 && stirSauce.fullRotation < 15)
+        //    {
+        //        enemyHealthFloat -= 20f;
+        //        combatText.text = "A meaty strike!";
+        //    }
+        //    else if (stirSauce.fullRotation > 15)
+        //    {
+        //        enemyHealthFloat -= 40f;
+        //        combatText.text = "Wow! They must be feeling pretty sour right now!";
+        //    }
+        //    else if(stirSauce.fullRotation<10 && stirSauce.fullRotation > 0)
+        //    {
+        //        enemyHealthFloat -= 10f;
+        //        combatText.text = "Yikes, I think you may have gotten lost in the sauce.";
+        //    }
+        //    stirSauce.fullRotation = 0;
 
-            if (ultimateInt == 2)
-            {
-                combatText.text = "Finishing Move! Meatballistic Missile!";
-                enemyHealthFloat -= 75f;
-                ultimateMoveSound.Play();
-                ultimateInt = 0;
+        //    if (ultimateInt == 2)
+        //    {
+        //        combatText.text = "Finishing Move! Meatballistic Missile!";
+        //        enemyHealthFloat -= 75f;
+        //        ultimateMoveSound.Play();
+        //        ultimateInt = 0;
 
-            }
-        }
+        //    }
+        //}
 	    
 	    if (oBar.Bar.fillAmount >= .99f)
 	    {

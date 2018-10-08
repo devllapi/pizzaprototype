@@ -321,9 +321,11 @@ MonoBehaviour:
   butAct: 0
   butDead: 0
   butResult: 0
+  correctInputs: 0
   neutralCirc: {fileID: 0}
   check: {fileID: 21300000, guid: f5ee6a4ec23e3934eab65d4e7fc0dde6, type: 3}
   fail: {fileID: 21300000, guid: f5d7f02f9e9567240a8fdcb2c49f0143, type: 3}
+  neutralityCircle: {fileID: 0}
   gameState: 0
 --- !u!114 &128126682
 MonoBehaviour:
@@ -759,6 +761,7 @@ MonoBehaviour:
   button3: {fileID: 128126678}
   enemyHealthFloat: 0
   enemyHealth: {fileID: 293448931}
+  oreganoShit: {fileID: 0}
   hideUI: {fileID: 1401331779}
   ultimateMoveSound: {fileID: 547639481}
   playerHealthBar: {fileID: 0}
@@ -1144,9 +1147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df231b312579964298a5a049121e55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 0
-  mana: 0
+  health: 100
+  maxHealth: 100
+  mana: 100
 --- !u!4 &822185922
 Transform:
   m_ObjectHideFlags: 0
