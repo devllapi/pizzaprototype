@@ -23,6 +23,7 @@ public class enemyAIMaster : MonoBehaviour
     public Image enemyHealthBar;
 
     public bool minigameActive;
+    public bool movedStick;
 
     public enum CombatState
     {
@@ -46,6 +47,17 @@ public class enemyAIMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for(int i = 0; i < enemyList.Length; i++)
+        {
+            if(i == playerSelect)
+            {
+                enemyList[i].glow();
+            }
+            else
+            {
+                enemyList[i].unglow();
+            }
+        }
         switch (combatState)
         {
             case CombatState.enemySelect:
@@ -107,6 +119,7 @@ public class enemyAIMaster : MonoBehaviour
             case CombatState.enemyTurn:
                 print("enemyTurn");
                 EnemyAttackPattern();
+                combatState = CombatState.enemySelect;
                 break;
         }
 
@@ -117,16 +130,17 @@ public class enemyAIMaster : MonoBehaviour
     public void selectTarget()
     {
         hideUI.SetActive(false);
-
-        playerSelect = 0;
-
-        if (Input.GetAxisRaw("Horizontal") > 0)
+        if (Input.GetAxisRaw("Horizontal") > 0 && !movedStick)
         {
             playerSelect += 1;
+            movedStick = true;
         }
-        else if (Input.GetAxis("Horizontal") < 0)
+        else if (Input.GetAxisRaw("Horizontal") < 0 && !movedStick)
         {
             playerSelect -= 1;
+            movedStick = true;
+        }else if ((Input.GetAxisRaw("Horizontal") == 0)){
+            movedStick = false;
         }
 
         if (playerSelect >= enemyList.Length)

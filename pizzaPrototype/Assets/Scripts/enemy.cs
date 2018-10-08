@@ -32,5 +32,13 @@ public abstract class enemy : MonoBehaviour {
         isDefending = true;
     }
 
-    public abstract void glow();
+    public void glow()
+    {
+        glowObj.SetActive(true);
+    }
+
+    public void unglow()
+    {
+        glowObj.SetActive(false);
+    }
 }

@@ -53,8 +53,6 @@ public class enemyChef : enemy
     {
         gameManager.gm.p.health -= (int)Random.Range(10, 13);
     }
-    public override void glow()
-    {
-        glowObj.SetActive(true);
-    }
+
+
 }

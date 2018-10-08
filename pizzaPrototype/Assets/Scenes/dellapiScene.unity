@@ -911,6 +911,9 @@ MonoBehaviour:
   button1: {fileID: 398247737}
   button2: {fileID: 919994378}
   button3: {fileID: 128126678}
+  tenderizerGame: 0
+  stirringGame: 0
+  oreganoGame: 0
   ultimateMoveSound: {fileID: 547639481}
   playerHealthBar: {fileID: 1129612220}
   p: {fileID: 822185921}
@@ -2000,8 +2003,8 @@ MonoBehaviour:
   oreganoHolder: {fileID: 1749484052}
   hideUI: {fileID: 1401331779}
   enemyHealthBar: {fileID: 1839326985}
+  minigameActive: 0
   combatState: 0
-  activeMinigame: 0
 --- !u!224 &1328801196
 RectTransform:
   m_ObjectHideFlags: 0
