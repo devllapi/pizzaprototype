@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 125501701}
   - component: {fileID: 125501700}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: HealthBarBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -764,7 +764,7 @@ MonoBehaviour:
   oreganoShit: {fileID: 0}
   hideUI: {fileID: 1401331779}
   ultimateMoveSound: {fileID: 547639481}
-  playerHealthBar: {fileID: 0}
+  playerHealthBar: {fileID: 1129612220}
   p: {fileID: 822185921}
 --- !u!4 &547639480
 Transform:
@@ -1672,7 +1672,7 @@ GameObject:
   - component: {fileID: 1129612221}
   - component: {fileID: 1129612220}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HealthBarGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
