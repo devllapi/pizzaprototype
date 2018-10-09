@@ -161,12 +161,7 @@ public class enemyAIMaster : MonoBehaviour
     }
     public void SpellSelection()
     {
-        hideUI.SetActive(true);
 
-        if (Input.GetButtonDown("Submit"))
-        {
-            combatState = CombatState.minigame;
-        }
     }
 
     public void Minigames()
@@ -187,6 +182,8 @@ public class enemyAIMaster : MonoBehaviour
             }       
         }
     }
+
+
     public void EnemyAttackPattern()
     {
         print("IM ATTACKING");
