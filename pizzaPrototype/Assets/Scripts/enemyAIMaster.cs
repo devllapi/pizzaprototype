@@ -28,9 +28,10 @@ public class enemyAIMaster : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	    Debug.Log(whoseTurn);
         if (whoseTurn == 0)//players turn
         {
-            canISelectThings = true;
+           // canISelectThings = true;
             print(canISelectThings);
             if (canISelectThings == true)
             {
@@ -46,15 +47,18 @@ public class enemyAIMaster : MonoBehaviour {
                 if (tenderizerScript.squeezeCount > 20 && tenderizerScript.squeezeCount < 30)
                 {
                     enemyList[playerSelect].takeDamage(20);
+                    whoseTurn = 1;
                     
                 }
                 else if (tenderizerScript.squeezeCount > 30)
                 {
                     enemyList[playerSelect].takeDamage(40);
+                    whoseTurn = 1;
                 }
                 else if (tenderizerScript.squeezeCount < 25 && tenderizerScript.squeezeCount > 0)
                 {
                     enemyList[playerSelect].takeDamage(10);
+                    whoseTurn = 1;
                 }
                 tenderizerScript.squeezeCount = 0;
             }
@@ -64,18 +68,22 @@ public class enemyAIMaster : MonoBehaviour {
                 if (stirSauce.fullRotation > 10 && stirSauce.fullRotation < 15)
                 {
                     enemyList[playerSelect].takeDamage(20);
+                    whoseTurn = 1;
                 }
                 else if (stirSauce.fullRotation > 15)
                 {
                     enemyList[playerSelect].takeDamage(20);
+                    whoseTurn = 1;
                 }
                 else if (stirSauce.fullRotation < 10 && stirSauce.fullRotation > 0)
                 {
                     enemyList[playerSelect].takeDamage(10);
+                    whoseTurn = 1;
                 }
                 stirSauce.fullRotation = 0;
             }
-            whoseTurn = 1;
+            
+            Debug.Log(whoseTurn);
         }
         if (whoseTurn == 1)
         {
@@ -90,10 +98,10 @@ public class enemyAIMaster : MonoBehaviour {
                 {
                     enemyList[i].defend();
                 }
-               
+                whoseTurn = 0;
             }
         }
-        whoseTurn = 0;
+       
         
 	}
 

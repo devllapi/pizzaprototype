@@ -15,6 +15,7 @@
           <e p="LemonSqueezeMinigame.cs" t="Include" />
           <e p="OreganoCircle.cs" t="Include" />
           <e p="OreganoStun.cs" t="Include" />
+          <e p="player.cs" t="Include" />
           <e p="potSpinning.cs" t="Include" />
         </e>
       </e>
