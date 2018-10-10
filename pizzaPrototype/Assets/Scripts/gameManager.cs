@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class gameManager : MonoBehaviour {
 
     public static gameManager gm;
+    public enemyAIMaster ai;
 
     [Header ("Text")]
     public Text combatText;
@@ -30,7 +31,9 @@ public class gameManager : MonoBehaviour {
     public Button button2;
     public Button button3;
 
-
+    public bool tenderizerGame;
+    public bool stirringGame;
+    public bool oreganoGame;
    
   
     int ultimateInt;
@@ -40,20 +43,15 @@ public class gameManager : MonoBehaviour {
     int sauceInt;
 
     [Header("Player Variables")]
-    public GameObject hideUI;
+   
     public AudioSource ultimateMoveSound;
     public Image playerHealthBar;
     public player p;
-
-    
-
-
     
     // Use this for initialization
     void Start () {
         gm = this;
-        hideUI.SetActive(false);
-
+      
 	}
 	
 	// Update is called once per frame
@@ -81,54 +79,7 @@ public class gameManager : MonoBehaviour {
         {
             timerText.text = "0.0";
         }
-        //if (squeezeScript.gameState == 0)
-        //{
-
-        //    if (squeezeScript.squeezeCount>20 && squeezeScript.squeezeCount < 30)
-        //    {
-        //        enemyHealthFloat -= 20f;
-        //        combatText.text = "A beefy strike!";
-        //    }
-        //    else if (squeezeScript.squeezeCount > 30)
-        //    {
-        //        enemyHealthFloat -= 40f;
-        //        combatText.text = "Wow! Well done! Get it? Like...doneness...meat...";
-        //    }else if (squeezeScript.squeezeCount < 25 && squeezeScript.squeezeCount > 0)
-        //        {
-        //            enemyHealthFloat -= 10f;
-        //            combatText.text = "Who are you going to beat if you can't ball some meat?";
-        //        }
-        //    squeezeScript.squeezeCount = 0;
-        //}
-        //if (stirSauce.gameState == 0)
-        //{
-
-        //    if (stirSauce.fullRotation > 10 && stirSauce.fullRotation < 15)
-        //    {
-        //        enemyHealthFloat -= 20f;
-        //        combatText.text = "A meaty strike!";
-        //    }
-        //    else if (stirSauce.fullRotation > 15)
-        //    {
-        //        enemyHealthFloat -= 40f;
-        //        combatText.text = "Wow! They must be feeling pretty sour right now!";
-        //    }
-        //    else if(stirSauce.fullRotation<10 && stirSauce.fullRotation > 0)
-        //    {
-        //        enemyHealthFloat -= 10f;
-        //        combatText.text = "Yikes, I think you may have gotten lost in the sauce.";
-        //    }
-        //    stirSauce.fullRotation = 0;
-
-        //    if (ultimateInt == 2)
-        //    {
-        //        combatText.text = "Finishing Move! Meatballistic Missile!";
-        //        enemyHealthFloat -= 75f;
-        //        ultimateMoveSound.Play();
-        //        ultimateInt = 0;
-
-        //    }
-        //}
+        
 	    
 	    if (oBar.Bar.fillAmount >= .99f)
 	    {
@@ -151,9 +102,11 @@ public class gameManager : MonoBehaviour {
 
     public void LemonSqueeze()
     {
+        //ai.combatState = enemyAIMaster.CombatState.minigame;
+        tenderizerGame = true;
         combatText.text = "MASH BUTTONS TO POUND MEAT!";
-        squeezeScript.gameState = 1;
-        hideUI.SetActive(false);
+       // squeezeScript.gameState = 1;
+        
         if (meatInt != 1)
         {
             ultimateInt += 1;
@@ -163,14 +116,17 @@ public class gameManager : MonoBehaviour {
     }
     public void OreganoButtonPress()
     {
+        ai.combatState = enemyAIMaster.CombatState.minigame;
         oreganoHolder.gameObject.SetActive(true);
     }
     
     public void PotSpin()
     {
+        stirringGame = true;
+        ai.combatState = enemyAIMaster.CombatState.minigame;
         combatText.text = "STIR THAT SAUCE";
         stirSauce.gameState = 1;
-        hideUI.SetActive(false);
+        
         if (sauceInt != 1)
         {
             ultimateInt += 1;
@@ -179,9 +135,6 @@ public class gameManager : MonoBehaviour {
     }
 
     //This reatives the menu ui after a minigame
-    public void reactiveUI()
-    {
-        hideUI.SetActive(true);
-    }
+    
 }
 

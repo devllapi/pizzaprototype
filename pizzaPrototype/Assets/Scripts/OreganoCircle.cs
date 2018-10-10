@@ -20,7 +20,9 @@ public class OreganoCircle : MonoBehaviour
 	public Sprite fail;
 	public Sprite neutralityCircle;
 
-	public int gameState;
+	public int score;
+	
+	//public Minigames mg;
 	
 	
 	// Use this for initialization
@@ -29,7 +31,6 @@ public class OreganoCircle : MonoBehaviour
 		//allows us to change the image of the buttons
 		neutralCirc = GetComponent<Image>();
 		//Time.timeScale = .1f;
-		gameState = 0;
 	}
 	
 	// Update is called once per frame
@@ -51,6 +52,7 @@ public class OreganoCircle : MonoBehaviour
 			{
 				butResult = 1;
 				neutralCirc.sprite = check;
+				score += 5;
 				correctInputs += 1; 
 			}
 	

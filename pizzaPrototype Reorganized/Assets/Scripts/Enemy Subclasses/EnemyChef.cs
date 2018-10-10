@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyChef : enemy
+public class enemyChef : Enemy
 {
     void Start()
     {
@@ -21,12 +21,12 @@ public class enemyChef : enemy
         {
             //perform attack
             normAttack();
-            
+
         }
-        if(health<=75 && health > 50)
+        if (health <= 75 && health > 50)
         {
             //perform attack or heal
-            if(Random.Range(0,1) > 0.5f)
+            if (Random.Range(0, 1) > 0.5f)
             {
                 normAttack();
             }
@@ -43,16 +43,16 @@ public class enemyChef : enemy
     }
 
 
-        
+
     public void heal()
     {
-        health += (Random.Range(10,15));//heal by ten percent
+        health += (Random.Range(10, 15));//heal by ten percent
         mana -= (maxMana * .5f);
     }
     public void normAttack()
     {
         print("IM REALLY LAYING THE HURT");
-        gameManager.gm.p.health -= (int)Random.Range(10, 15);
+        GameManager.gm.p.health -= (int)Random.Range(10, 15);
     }
 
 
