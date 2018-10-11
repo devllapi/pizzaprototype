@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour {
             mg.score = 0;
             for (int i = 0; i < enemyList.Length; i++)
             {
+
                 if (i == playerSelect)
                 {
                     enemyList[i].glow();
