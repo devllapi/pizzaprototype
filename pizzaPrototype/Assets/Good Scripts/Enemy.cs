@@ -32,6 +32,17 @@ public abstract class Enemy : MonoBehaviour
             health -= dmg;
         }
     }
+    public void takeDamage(float dmg, int type)
+    {
+        if (isDefending && type != 2)
+        {
+            health -= dmg / 2;
+        }
+        else
+        {
+            health -= dmg;
+        }
+    }
 
     public void defend()
     {

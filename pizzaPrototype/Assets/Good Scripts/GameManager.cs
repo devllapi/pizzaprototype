@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 public class GameManager : MonoBehaviour {
 
     //Singleton
     public static GameManager gm;
+    public EventSystem es;
 
     [Header("Text")]
     public Text combatText;
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour {
 
     [Header("Player Variables")]
     public Player p;
+    private bool selectingAttack;
 
 
     [Header("The Artist formerly known as AI Manager")]
@@ -45,6 +49,7 @@ public class GameManager : MonoBehaviour {
         gm = this;
         timer = 3f;
         generateEnemies(1,3);
+        es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
     }
 
     // Update is called once per frame
@@ -82,6 +87,12 @@ public class GameManager : MonoBehaviour {
             {
                 buttons[i].interactable = true;
             }
+            //Assigns a button to the event system, if it doesn't have one
+            if (es.currentSelectedGameObject  != buttons[0].gameObject && !selectingAttack)
+            {
+                es.SetSelectedGameObject(buttons[0].gameObject);
+                selectingAttack = true;
+            }
 
             //If a button is clicked 
             if (Input.GetButtonDown("Submit"))
@@ -98,6 +109,7 @@ public class GameManager : MonoBehaviour {
         //Activates the minigame
         else if (gameState == 2)
         {
+            selectingAttack = false;
             //If a minigame is being played....
             if (gameActive)
             {
@@ -155,7 +167,7 @@ public class GameManager : MonoBehaviour {
                 else
                 {
                     //Damages the enemy
-                    enemyList[playerSelect].takeDamage(mg.score);
+                    enemyList[playerSelect].takeDamage(mg.score, whichGame);
 
                     //Disables the minigame
                     mg.oreganoMinigame.gameObject.SetActive(false);
