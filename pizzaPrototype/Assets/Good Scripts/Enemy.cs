@@ -13,6 +13,8 @@ public abstract class Enemy : MonoBehaviour
     public bool isDefending;
     public GameObject glowObj;
 
+    public Text enemyBarks;
+
     //Prefabs & Visuals
     [Header("Visuals")]
     public Image enemyHealthBar;
@@ -22,6 +24,17 @@ public abstract class Enemy : MonoBehaviour
     public void takeDamage(float dmg)
     {
         if (isDefending)
+        {
+            health -= dmg / 2;
+        }
+        else
+        {
+            health -= dmg;
+        }
+    }
+    public void takeDamage(float dmg, int type)
+    {
+        if (isDefending && type != 2)
         {
             health -= dmg / 2;
         }

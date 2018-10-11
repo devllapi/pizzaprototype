@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 public class GameManager : MonoBehaviour {
 
     //Singleton
     public static GameManager gm;
+    public EventSystem es;
 
     [Header("Text")]
     public Text combatText;
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour {
 
     [Header("Player Variables")]
     public Player p;
+    private bool selectingAttack;
 
 
     [Header("The Artist formerly known as AI Manager")]
@@ -36,48 +40,85 @@ public class GameManager : MonoBehaviour {
     public GameObject hideUI;
     public Image enemyHealthBar;
     public bool movedStick;
+    
 
-
-
+    public Button[] buttons;
     // Use this for initialization
     void Start()
     {
         gm = this;
         timer = 3f;
         generateEnemies(1,3);
+        es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //Player selects their target
-        if(gameState == 0)
+        if (gameState == 0)
         {
+            for (var i=0; i < buttons.Length; i++)
+            {
+                buttons[i].interactable = false;
+            }
+            combatText.text = "Select a target!";
             mg.score = 0;
-            selectTarget();
+            for (int i = 0; i < enemyList.Length; i++)
+            {
+                if (i == playerSelect)
+                {
+                    enemyList[i].glow();
+                }
+                else
+                {
+                    enemyList[i].unglow();
+                }
+                selectTarget();
+            }
         }
 
         //Player selects their attack
         else if (gameState == 1)
         {
             combatText.text = "Choose your spell!";
-            hideUI.SetActive(true);
+            //hideUI.SetActive(true);
+            for (var i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].interactable = true;
+            }
+            //Assigns a button to the event system, if it doesn't have one
+            if (es.currentSelectedGameObject  != buttons[0].gameObject && !selectingAttack)
+            {
+                es.SetSelectedGameObject(buttons[0].gameObject);
+                selectingAttack = true;
+            }
 
             //If a button is clicked 
             if (Input.GetButtonDown("Submit"))
             {
-                hideUI.SetActive(false);
+                //hideUI.SetActive(false);
+                for (var i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].interactable = false;
+                }
                 //gameState = 3;
             }
         }
 
         //Activates the minigame
-        else if(gameState == 2) {
+        else if (gameState == 2)
+        {
+            selectingAttack = false;
             //If a minigame is being played....
             if (gameActive)
             {
                 scoreText.text = "Score: " + mg.score;
-                hideUI.SetActive(false);
+                //hideUI.SetActive(false);
+                for (var i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].interactable = false;
+                }
                 timer -= Time.deltaTime;
 
                 //...Display the timer
@@ -126,7 +167,7 @@ public class GameManager : MonoBehaviour {
                 else
                 {
                     //Damages the enemy
-                    enemyList[playerSelect].takeDamage(mg.score);
+                    enemyList[playerSelect].takeDamage(mg.score, whichGame);
 
                     //Disables the minigame
                     mg.oreganoMinigame.gameObject.SetActive(false);
@@ -135,17 +176,26 @@ public class GameManager : MonoBehaviour {
                     gameState = 3;
                 }
             }
-        }   
+        }
         //Enemy Attacks the player
         else if (gameState == 3)
         {
+            
+            
             print("IM ATTACKING");
+            
             for (int i = 0; i < enemyList.Length; i++)
             {
+                
                 enemyList[i].attack();
             }
-            gameState = 0;
+            
+            
+            
+                gameState = 0;
+            
         }
+       
     }
 
     //Recieves an integer from the button, then, activates that minigame
@@ -181,7 +231,11 @@ public class GameManager : MonoBehaviour {
     //number of enemies, wraps aound to the other side
     public void selectTarget()
     {
-        hideUI.SetActive(false);
+        //hideUI.SetActive(false);
+        for (var i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = false;
+        }
         if (Input.GetAxisRaw("Horizontal") > 0 && !movedStick)
         {
             playerSelect += 1;
