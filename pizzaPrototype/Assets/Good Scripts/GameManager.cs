@@ -40,7 +40,11 @@ public class GameManager : MonoBehaviour {
     public GameObject hideUI;
     public Image enemyHealthBar;
     public bool movedStick;
-    
+
+    [Header("Ultimate Int Checks")]
+    public int sauceInt;
+    public int seasonInt;
+    public int meatInt;
 
     public Button[] buttons;
     // Use this for initialization
@@ -50,6 +54,10 @@ public class GameManager : MonoBehaviour {
         timer = 3f;
         generateEnemies(1,3);
         es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+
+        sauceInt = 0;
+        meatInt = 0;
+        seasonInt = 0;
     }
 
     // Update is called once per frame
@@ -140,6 +148,11 @@ public class GameManager : MonoBehaviour {
                     if (whichGame == 1)
                     {
                         mg.Tenderizer();
+                        if (meatInt <= 1)
+                        {
+                            meatInt = 1;
+                            print("meat int" + meatInt);
+                        }
                         combatText.text = "Mash the shoulder buttons!";
                     }
 
@@ -147,6 +160,11 @@ public class GameManager : MonoBehaviour {
                     else if (whichGame == 2)
                     {
                         mg.SauceToss();
+                        if (sauceInt <= 1)
+                        {
+                            sauceInt = 1;
+                            print("sauce int" + sauceInt);
+                        }
                         combatText.text = "Spin the analog stick!";
                     }
 
@@ -154,6 +172,11 @@ public class GameManager : MonoBehaviour {
                     else if (whichGame == 3)
                     {
                         mg.OregenoStun();
+                        if (seasonInt <=1)
+                        {
+                            print("season int" + seasonInt);
+                            seasonInt = 1;
+                        }
                         combatText.text = "Press X on time!";
                     }
 
@@ -169,6 +192,15 @@ public class GameManager : MonoBehaviour {
                     //Damages the enemy
                     enemyList[playerSelect].takeDamage(mg.score, whichGame);
 
+                    if (sauceInt + meatInt + seasonInt == 3)
+                    {
+                        print("Ultimate Worked");
+                        combatText.text = "ULTIMATE MOVE! MEATBALLISTIC MISSILE!";
+                        for (int i = 0; i < enemyList.Length; i++)
+                        {
+                            enemyList[i].takeDamage(30);
+                        }
+                    }
                     //Disables the minigame
                     mg.oreganoMinigame.gameObject.SetActive(false);
                     gameActive = false;
@@ -189,8 +221,6 @@ public class GameManager : MonoBehaviour {
                 
                 enemyList[i].attack();
             }
-            
-            
             
                 gameState = 0;
             

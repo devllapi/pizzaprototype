@@ -38,6 +38,7 @@ public abstract class Enemy : MonoBehaviour
         {
             health -= dmg / 2;
         }
+        
         else
         {
             health -= dmg;
