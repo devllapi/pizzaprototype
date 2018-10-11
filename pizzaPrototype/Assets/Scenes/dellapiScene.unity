@@ -1063,6 +1063,7 @@ MonoBehaviour:
   enemyHealthBar: {fileID: 114561464770761800, guid: 5d79c72928c7b87498619ae0519cd7e1,
     type: 2}
   movedStick: 0
+  comboAttack: 000000
   buttons:
   - {fileID: 398247737}
   - {fileID: 919994378}
