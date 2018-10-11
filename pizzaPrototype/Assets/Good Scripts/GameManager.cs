@@ -46,12 +46,21 @@ public class GameManager : MonoBehaviour {
     public bool comboStateReached;
 
     public Button[] buttons;
+
+    [Header("Pause/Game Feel")]
+    public float pTimer;
+    public float turnDelay;
+    public float enemyDelay;
+    public bool enemyTurn;
+    public int index;
+
+
     // Use this for initialization
     void Start()
     {
         gm = this;
         timer = 3f;
-        generateEnemies(1,4);
+        generateEnemies(2,4);
         es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 
         
@@ -212,19 +221,54 @@ public class GameManager : MonoBehaviour {
         //Enemy Attacks the player
         else if (gameState == 3)
         {
+
             
+
+            enemyList[index].attack();
+            gameState = 4;
+            index++;
             
+            //ensures that we'll never go over the enemy list
+            if(index > enemyList.Length - 1)
+            {
+                enemyTurn = false;
+            }
+            else
+            {
+                enemyTurn = true;
+                pTimer = enemyDelay;
+            }
+
             print("IM ATTACKING");
             
-            for (int i = 0; i < enemyList.Length; i++)
+            /*for (int i = 0; i < enemyList.Length; i++)
             {
                 
                 enemyList[i].attack();
+                
+            }*/
+            
+
+            gameState = 4;
+
+        }else if (gameState == 4)
+        {
+            pTimer -= Time.deltaTime;
+            if(pTimer <= 0)
+            {
+                pTimer = turnDelay;
+                if (!enemyTurn)
+                {
+                    gameState = 0;
+                    index = 0;
+                }
+                else
+                {
+                    gameState = 3;
+                }
             }
-            
-                gameState = 0;
-            
         }
+        
        
     }
 
