@@ -20,6 +20,7 @@ public class Minigames : MonoBehaviour {
 
     [Header("Oregano Stun")] 
     public GameObject oreganoMinigame;
+    public OreganoCircle circlesScript;
 
     // Use this for initialization
     void Start () {
@@ -110,7 +111,7 @@ public class Minigames : MonoBehaviour {
     //
     public int OregenoStun()
     {
-        oreganoMinigame.gameObject.SetActive(true);        
+        oreganoMinigame.gameObject.SetActive(true);
         return score;
     }
 }

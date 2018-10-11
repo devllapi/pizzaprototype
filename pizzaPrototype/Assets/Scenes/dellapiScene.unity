@@ -1044,6 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5c4950e5eef0e44a79bfb4c7a01516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  es: {fileID: 0}
   combatText: {fileID: 1913625161}
   mg: {fileID: 1593572772}
   timerText: {fileID: 1081170786}
@@ -2294,6 +2295,7 @@ MonoBehaviour:
   fullRotation: 0
   clockwise: 0
   oreganoMinigame: {fileID: 0}
+  circlesScript: {fileID: 0}
 --- !u!1 &1401331779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,6 +2414,7 @@ MonoBehaviour:
   fullRotation: 0
   clockwise: 0
   oreganoMinigame: {fileID: 1036946217}
+  circlesScript: {fileID: 2002320446}
 --- !u!4 &1593572773
 Transform:
   m_ObjectHideFlags: 0
