@@ -907,8 +907,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ai: {fileID: 1328801195}
   combatText: {fileID: 1913625161}
-  squeezeScript: {fileID: 1366670027}
-  stirSauce: {fileID: 1366670029}
+  squeezeScript: {fileID: 0}
+  stirSauce: {fileID: 0}
   oCircles: {fileID: 2002320446}
   oBar: {fileID: 1396374652}
   oreganoHolder: {fileID: 1036946217}
@@ -936,7 +936,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &547639481
 AudioSource:
@@ -1254,7 +1254,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &911494972
 GameObject:
@@ -1299,7 +1299,7 @@ RectTransform:
   m_Children:
   - {fileID: 1630633415}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1758,7 +1758,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1081170787
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2089,8 +2089,8 @@ MonoBehaviour:
   playerSelect: 0
   enemyPrefab: {fileID: 1304046458923906, guid: 5d79c72928c7b87498619ae0519cd7e1,
     type: 2}
-  tenderizerScript: {fileID: 1366670027}
-  stirSauce: {fileID: 1366670029}
+  tenderizerScript: {fileID: 0}
+  stirSauce: {fileID: 0}
   oCircles: {fileID: 2002320446}
   oBar: {fileID: 1396374652}
   oreganoHolder: {fileID: 1749484052}
@@ -2110,77 +2110,13 @@ RectTransform:
   m_LocalScale: {x: 0.022071052, y: 0.022071052, z: 0.022071052}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -4.43, y: 2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1366670026
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1366670028}
-  - component: {fileID: 1366670027}
-  - component: {fileID: 1366670029}
-  m_Layer: 0
-  m_Name: Minigames
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1366670027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1366670026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b2106c4e4280934ca5583ffb8bb1be1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  squeezeCount: 0
-  juicedLemons: 0
-  timer: 0
-  gameState: 0
-  gameText: {fileID: 1913625161}
-  squeezedText: {fileID: 981879307}
---- !u!4 &1366670028
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1366670026}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6350542, y: -0.052306205, z: 4.8027344}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1366670029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1366670026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c63caf688b888c4885d0d5140f0b382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spinsDetected: 0
-  quadrant: 0
-  clockwise: 0
-  fullRotation: 0
-  gameState: 0
-  timer: 0
 --- !u!1 &1396374645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2423,6 +2359,7 @@ MonoBehaviour:
   maxMana: 0
   isDefending: 0
   glowObj: {fileID: 1376954257738700, guid: 5d79c72928c7b87498619ae0519cd7e1, type: 2}
+  enemyBarks: {fileID: 0}
   enemyHealthBar: {fileID: 114561464770761800, guid: 5d79c72928c7b87498619ae0519cd7e1,
     type: 2}
 --- !u!4 &1544659888
@@ -2436,7 +2373,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1593572771
 GameObject:
@@ -2482,7 +2419,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630633413
 GameObject:

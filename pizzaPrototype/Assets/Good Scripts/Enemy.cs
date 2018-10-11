@@ -13,6 +13,8 @@ public abstract class Enemy : MonoBehaviour
     public bool isDefending;
     public GameObject glowObj;
 
+    public Text enemyBarks;
+
     //Prefabs & Visuals
     [Header("Visuals")]
     public Image enemyHealthBar;

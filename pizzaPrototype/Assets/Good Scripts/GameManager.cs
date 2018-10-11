@@ -53,8 +53,20 @@ public class GameManager : MonoBehaviour {
         //Player selects their target
         if(gameState == 0)
         {
+            combatText.text = "Select a target!";
             mg.score = 0;
-            selectTarget();
+            for (int i = 0; i < enemyList.Length; i++)
+            {
+                if (i == playerSelect)
+                {
+                    enemyList[i].glow();
+                }
+                else
+                {
+                    enemyList[i].unglow();
+                }
+                selectTarget();
+            }
         }
 
         //Player selects their attack
@@ -139,12 +151,20 @@ public class GameManager : MonoBehaviour {
         //Enemy Attacks the player
         else if (gameState == 3)
         {
+            timer = 3;
             print("IM ATTACKING");
             for (int i = 0; i < enemyList.Length; i++)
             {
                 enemyList[i].attack();
             }
-            gameState = 0;
+            if (timer <= 3)
+            {
+                timer -= Time.deltaTime;
+            }
+            if (timer == 0)
+            {
+                gameState = 0;
+            }
         }
     }
 
