@@ -16,12 +16,14 @@ public class OreganoStun : MonoBehaviour
 	public Image Bar;
 
 	public int gameState;
+	public GameObject oreganoMinigame;
+	
+	public GameManager gm;
 
-	// Use this for initialization
+	// Use this for initializatio
+
 	private void OnEnable()	
 	{
-		if (gameState == 1)
-		{
 			//an image's box collider doesn't scale in unity, so we have to scale it through code.
 			barCollider = GetComponent<BoxCollider2D>();
 			//barX = barCollider.transform.position.x;
@@ -31,7 +33,6 @@ public class OreganoStun : MonoBehaviour
 			curTime = 0f;
 			//at the start of script, 
 			InvokeRepeating("increaseTime", 0f, 0.03f);
-		}
 	}
 
 	void increaseTime()
@@ -50,13 +51,31 @@ public class OreganoStun : MonoBehaviour
 		Bar.fillAmount = theTime;
 		//this make's the bar's boxCollider larger over time. 304 is an arbitrary number that happens to have
 		//the collider scale with the bar. There's a more optimal way to write this, but idk what it is.
-		if (Bar.fillAmount < 1f)
-		{
-			barCollider.size = new Vector3(theTime * 17, 1, -1);
-		}
-		else
-		{
-			gameState = 1;
+		
+			if (Bar.fillAmount < 1f)
+			{
+				barCollider.size = new Vector3(theTime * 17, 1, -1);
+			}
+			else
+			{
+				if (gm.timer <= .1f)
+				{
+				Bar.fillAmount = 0;
+				//we must cancel the invoke, because it will continue to invoke even after the object is deactivated 
+				CancelInvoke();
+
+				OreganoCircle[] circles = oreganoMinigame.GetComponentsInChildren<OreganoCircle>();
+				Debug.Log(circles.Length);
+
+				foreach (OreganoCircle c in circles)
+				{
+					c.Reset();
+					Debug.Log(c.butDead);
+				}
+
+				//oCircles.Reset();
+				oreganoMinigame.gameObject.SetActive(false);
+			}
 		}
 	}
 }
