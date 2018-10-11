@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour {
 
     [Header("Ultimate Int Checks")]
     public bool[] comboAttack;
+    public bool comboStateReached;
 
     public Button[] buttons;
     // Use this for initialization
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour {
     {
         gm = this;
         timer = 3f;
-        generateEnemies(1,3);
+        generateEnemies(1,4);
         es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 
         
@@ -173,20 +174,32 @@ public class GameManager : MonoBehaviour {
                 //When the timer runs out...
                 else
                 {
-                    //Damages the enemy
-                    enemyList[playerSelect].takeDamage(mg.score, whichGame);
+                    comboStateReached = true;
 
                    for (int i=0; i<comboAttack.Length; i++)
                     {
-                        if (comboAttack[i] == true)
+                        if (comboAttack[i] == false)
                         {
-                            combatText.text = "ULTIMATE MOVE! MEATBALLISTIC MISSILE!";
-                            for (int j = 0; j < enemyList.Length; i++)
-                            {
-                                enemyList[j].takeDamage(30);
-                            }
+                            comboStateReached = false;
+                            break;
                         }
                     }
+
+                   //If the ulimate attack is successful, executes it here:
+                    if (comboStateReached)
+                    {
+                        combatText.text = "ULTIMATE MOVE! MEATBALLISTIC MISSILE!";
+                        for (int j = 0; j < enemyList.Length; j++)
+                        {
+                            enemyList[j].takeDamage(30);
+                        }
+                    }
+                    else
+                    {
+                        //Damages the enemy
+                        enemyList[playerSelect].takeDamage(mg.score, whichGame);
+                    }
+
                     //Disables the minigame
                     mg.oreganoMinigame.gameObject.SetActive(false);
                     gameActive = false;

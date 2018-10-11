@@ -1064,6 +1064,7 @@ MonoBehaviour:
     type: 2}
   movedStick: 0
   comboAttack: 000000
+  comboStateReached: 0
   buttons:
   - {fileID: 398247737}
   - {fileID: 919994378}
@@ -1839,7 +1840,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Oregano Stun
+  m_Text: Razzle Basil
 --- !u!222 &1112829977
 CanvasRenderer:
   m_ObjectHideFlags: 0

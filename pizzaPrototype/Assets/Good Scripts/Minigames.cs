@@ -49,6 +49,7 @@ public class Minigames : MonoBehaviour {
     //Rotate the sticks in order to increment the score
     public void SauceToss()
     {
+        
         if (rotationI >= 4)
         {
             rotationI = 0;
