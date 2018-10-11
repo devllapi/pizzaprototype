@@ -260,13 +260,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 547639479}
-        m_MethodName: OreganoButtonPress
-        m_Mode: 1
+      - m_Target: {fileID: 547639482}
+        m_MethodName: activiateMinigame
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   check: {fileID: 21300000, guid: f5ee6a4ec23e3934eab65d4e7fc0dde6, type: 3}
   fail: {fileID: 21300000, guid: f5d7f02f9e9567240a8fdcb2c49f0143, type: 3}
   neutralityCircle: {fileID: 0}
-  gameState: 0
+  score: 0
 --- !u!114 &128126682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +342,8 @@ MonoBehaviour:
   curTime: 0
   Bar: {fileID: 0}
   gameState: 0
+  oreganoMinigame: {fileID: 0}
+  gm: {fileID: 0}
 --- !u!1 &185703471
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +739,11 @@ Prefab:
       propertyPath: m_Size.x
       value: 24.236366
       objectReference: {fileID: 0}
+    - target: {fileID: 114716259879931498, guid: 2cf1b2f6e78820b4a893e8f84fbd21fb,
+        type: 2}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 547639482}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf1b2f6e78820b4a893e8f84fbd21fb, type: 2}
   m_IsPrefabAsset: 0
@@ -822,13 +829,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 547639479}
-        m_MethodName: LemonSqueeze
-        m_Mode: 1
+      - m_Target: {fileID: 547639482}
+        m_MethodName: activiateMinigame
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -878,6 +885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 547639480}
   - component: {fileID: 547639479}
+  - component: {fileID: 547639482}
   - component: {fileID: 547639481}
   m_Layer: 0
   m_Name: Game Manager
@@ -892,7 +900,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 547639478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec154ddea3d8a0949a63da830d3a2135, type: 3}
   m_Name: 
@@ -916,7 +924,7 @@ MonoBehaviour:
   oreganoGame: 0
   ultimateMoveSound: {fileID: 547639481}
   playerHealthBar: {fileID: 1129612220}
-  p: {fileID: 822185921}
+  p: {fileID: 0}
 --- !u!4 &547639480
 Transform:
   m_ObjectHideFlags: 0
@@ -928,7 +936,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &547639481
 AudioSource:
@@ -1025,6 +1033,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &547639482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 547639478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5c4950e5eef0e44a79bfb4c7a01516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatText: {fileID: 1913625161}
+  mg: {fileID: 1593572772}
+  timerText: {fileID: 1081170786}
+  scoreText: {fileID: 981879307}
+  timer: 0
+  minigameText: {fileID: 0}
+  whichGame: 0
+  gameActive: 0
+  gameState: 0
+  p: {fileID: 911494973}
+  enemyList: []
+  playerSelect: 0
+  enemyPrefab: {fileID: 1304046458923906, guid: 5d79c72928c7b87498619ae0519cd7e1,
+    type: 2}
+  hideUI: {fileID: 1401331779}
+  enemyHealthBar: {fileID: 114561464770761800, guid: 5d79c72928c7b87498619ae0519cd7e1,
+    type: 2}
+  movedStick: 0
 --- !u!1 &747785878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,7 +1078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &747785879
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1092,7 +1129,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &747785881
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1190,7 +1227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &822185921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,12 +1236,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 822185920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4df231b312579964298a5a049121e55b, type: 3}
+  m_Script: {fileID: 11500000, guid: 18f70541a8fd2864aad26fecc0e30583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
-  mana: 100
+  health: 0
+  maxHealth: 0
+  mana: 0
+  playerHealthBar: {fileID: 1129612220}
 --- !u!4 &822185922
 Transform:
   m_ObjectHideFlags: 0
@@ -1214,11 +1252,60 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2312084, y: -0.5094449, z: 4.8359375}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &911494972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 911494974}
+  - component: {fileID: 911494973}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &911494973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 911494972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f70541a8fd2864aad26fecc0e30583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
+  maxHealth: 0
+  mana: 0
+  playerHealthBar: {fileID: 1129612220}
+--- !u!224 &911494974
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 911494972}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.022071052, y: 0.022071052, z: 0.022071052}
   m_Children:
   - {fileID: 1630633415}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4.43, y: 2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &919994376
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,13 +1382,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 547639479}
-        m_MethodName: PotSpin
-        m_Mode: 1
+      - m_Target: {fileID: 547639482}
+        m_MethodName: activiateMinigame
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1353,7 +1440,7 @@ GameObject:
   - component: {fileID: 981879308}
   - component: {fileID: 981879307}
   m_Layer: 5
-  m_Name: Meat TrackerText
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1409,7 +1496,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &981879308
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1451,7 +1538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -251.95627, y: 113.75}
+  m_AnchoredPosition: {x: 477, y: 111}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1039405803
@@ -1955,6 +2042,11 @@ Prefab:
       propertyPath: m_Size.x
       value: 23.787857
       objectReference: {fileID: 0}
+    - target: {fileID: 114716259879931498, guid: 2cf1b2f6e78820b4a893e8f84fbd21fb,
+        type: 2}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 547639482}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf1b2f6e78820b4a893e8f84fbd21fb, type: 2}
   m_IsPrefabAsset: 0
@@ -1978,7 +2070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1328801195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2018,7 +2110,7 @@ RectTransform:
   m_LocalScale: {x: 0.022071052, y: 0.022071052, z: 0.022071052}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2102,6 +2194,7 @@ GameObject:
   - component: {fileID: 1396374647}
   - component: {fileID: 1396374650}
   - component: {fileID: 1396374651}
+  - component: {fileID: 1396374653}
   - component: {fileID: 1396374652}
   m_Layer: 0
   m_Name: dark-blue-horizontal-bar
@@ -2242,6 +2335,25 @@ MonoBehaviour:
   curTime: 0
   Bar: {fileID: 1396374648}
   gameState: 1
+  oreganoMinigame: {fileID: 1036946217}
+  gm: {fileID: 547639482}
+--- !u!114 &1396374653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1396374645}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af8af1d1a5808c4e9b3133ab04b003c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  spinsDetected: 0
+  quadrant: 0
+  fullRotation: 0
+  clockwise: 0
+  oreganoMinigame: {fileID: 0}
 --- !u!1 &1401331779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,6 +2390,100 @@ RectTransform:
   m_AnchoredPosition: {x: -0, y: 227}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1544659886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544659888}
+  - component: {fileID: 1544659887}
+  m_Layer: 0
+  m_Name: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1544659887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1544659886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecd754bdfd27e64ca081399b5c00d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  mana: 0
+  maxMana: 0
+  isDefending: 0
+  glowObj: {fileID: 1376954257738700, guid: 5d79c72928c7b87498619ae0519cd7e1, type: 2}
+  enemyHealthBar: {fileID: 114561464770761800, guid: 5d79c72928c7b87498619ae0519cd7e1,
+    type: 2}
+--- !u!4 &1544659888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1544659886}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.74527824, y: 2.3489344, z: 109.2793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1593572771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593572773}
+  - component: {fileID: 1593572772}
+  m_Layer: 0
+  m_Name: Minigames
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1593572772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1593572771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af8af1d1a5808c4e9b3133ab04b003c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  spinsDetected: 0
+  quadrant: 0
+  fullRotation: 0
+  clockwise: 0
+  oreganoMinigame: {fileID: 1036946217}
+--- !u!4 &1593572773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1593572771}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.74527824, y: 2.3489344, z: 109.2793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630633413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,10 +2553,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1630633413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8487915, y: -0.82055515, z: -3.8359375}
-  m_LocalScale: {x: 0.370162, y: 0.370162, z: 0.370162}
+  m_LocalPosition: {x: 61.16609, y: -150.87636, z: 45.308216}
+  m_LocalScale: {x: 16.77138, y: 16.77138, z: 16.77138}
   m_Children: []
-  m_Father: {fileID: 822185922}
+  m_Father: {fileID: 911494974}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1749484052
@@ -2626,6 +2832,11 @@ Prefab:
       propertyPath: m_Size.x
       value: 23.885334
       objectReference: {fileID: 0}
+    - target: {fileID: 114716259879931498, guid: 2cf1b2f6e78820b4a893e8f84fbd21fb,
+        type: 2}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 547639482}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf1b2f6e78820b4a893e8f84fbd21fb, type: 2}
   m_IsPrefabAsset: 0

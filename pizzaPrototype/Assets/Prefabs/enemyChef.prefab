@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224521833703231968}
   - component: {fileID: 222436096288867402}
   - component: {fileID: 114296644902400174}
+  - component: {fileID: 114236309273137744}
   - component: {fileID: 212778807052991022}
   - component: {fileID: 114301555569850028}
   - component: {fileID: 223918626232607814}
@@ -47,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1440637576612694
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,13 +141,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114296644902400174
+--- !u!114 &114236309273137744
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1304046458923906}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecd754bdfd27e64ca081399b5c00d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  mana: 0
+  maxMana: 0
+  isDefending: 0
+  glowObj: {fileID: 1376954257738700}
+  enemyHealthBar: {fileID: 114561464770761800}
+--- !u!114 &114296644902400174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304046458923906}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 889b8af6b4eab8947bdf28008fe94fae, type: 3}
   m_Name: 
