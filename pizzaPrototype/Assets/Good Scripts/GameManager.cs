@@ -225,6 +225,7 @@ public class GameManager : MonoBehaviour {
             
 
             enemyList[index].attack();
+            //enemyList[index].callOut();
             gameState = 4;
             index++;
             
@@ -261,6 +262,8 @@ public class GameManager : MonoBehaviour {
                 {
                     gameState = 0;
                     index = 0;
+                    
+                    
                 }
                 else
                 {
