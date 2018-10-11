@@ -102,7 +102,11 @@ public class GameManager : MonoBehaviour {
             if (gameActive)
             {
                 scoreText.text = "Score: " + mg.score;
-                hideUI.SetActive(false);
+                //hideUI.SetActive(false);
+                for (var i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].interactable = false;
+                }
                 timer -= Time.deltaTime;
 
                 //...Display the timer
@@ -164,7 +168,7 @@ public class GameManager : MonoBehaviour {
         //Enemy Attacks the player
         else if (gameState == 3)
         {
-            print(enemyWaitTime);
+            
             
             print("IM ATTACKING");
             
@@ -215,7 +219,11 @@ public class GameManager : MonoBehaviour {
     //number of enemies, wraps aound to the other side
     public void selectTarget()
     {
-        hideUI.SetActive(false);
+        //hideUI.SetActive(false);
+        for (var i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = false;
+        }
         if (Input.GetAxisRaw("Horizontal") > 0 && !movedStick)
         {
             playerSelect += 1;
