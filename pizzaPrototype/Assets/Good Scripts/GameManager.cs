@@ -36,9 +36,9 @@ public class GameManager : MonoBehaviour {
     public GameObject hideUI;
     public Image enemyHealthBar;
     public bool movedStick;
+    
 
-
-
+    public Button[] buttons;
     // Use this for initialization
     void Start()
     {
@@ -51,8 +51,12 @@ public class GameManager : MonoBehaviour {
     void Update()
     {
         //Player selects their target
-        if(gameState == 0)
+        if (gameState == 0)
         {
+            for (var i=0; i < buttons.Length; i++)
+            {
+                buttons[i].interactable = false;
+            }
             combatText.text = "Select a target!";
             mg.score = 0;
             for (int i = 0; i < enemyList.Length; i++)
@@ -73,18 +77,27 @@ public class GameManager : MonoBehaviour {
         else if (gameState == 1)
         {
             combatText.text = "Choose your spell!";
-            hideUI.SetActive(true);
+            //hideUI.SetActive(true);
+            for (var i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].interactable = true;
+            }
 
             //If a button is clicked 
             if (Input.GetButtonDown("Submit"))
             {
-                hideUI.SetActive(false);
+                //hideUI.SetActive(false);
+                for (var i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].interactable = false;
+                }
                 //gameState = 3;
             }
         }
 
         //Activates the minigame
-        else if(gameState == 2) {
+        else if (gameState == 2)
+        {
             //If a minigame is being played....
             if (gameActive)
             {
@@ -147,25 +160,26 @@ public class GameManager : MonoBehaviour {
                     gameState = 3;
                 }
             }
-        }   
+        }
         //Enemy Attacks the player
         else if (gameState == 3)
         {
-            timer = 3;
+            print(enemyWaitTime);
+            
             print("IM ATTACKING");
+            
             for (int i = 0; i < enemyList.Length; i++)
             {
+                
                 enemyList[i].attack();
             }
-            if (timer <= 3)
-            {
-                timer -= Time.deltaTime;
-            }
-            if (timer == 0)
-            {
+            
+            
+            
                 gameState = 0;
-            }
+            
         }
+       
     }
 
     //Recieves an integer from the button, then, activates that minigame

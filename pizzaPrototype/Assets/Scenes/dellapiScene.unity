@@ -1062,6 +1062,8 @@ MonoBehaviour:
   enemyHealthBar: {fileID: 114561464770761800, guid: 5d79c72928c7b87498619ae0519cd7e1,
     type: 2}
   movedStick: 0
+  enemyWaitTime: 3
+  button1: {fileID: 398247735}
 --- !u!1 &747785878
 GameObject:
   m_ObjectHideFlags: 0
