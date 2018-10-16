@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - oCircle
+  - oCircle2
+  - oCircle3
+  - OreganoBar
   layers:
   - Default
   - TransparentFX
