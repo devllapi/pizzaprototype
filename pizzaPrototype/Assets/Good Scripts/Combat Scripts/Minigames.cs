@@ -18,9 +18,12 @@ public class Minigames : MonoBehaviour {
     private bool[] currentQuandrant = new bool[4];
     private int rotationI;
 
+    public Minigames mg;
+
     [Header("Oregano Stun")] 
     public GameObject oreganoMinigame;
-    public OreganoCircle circlesScript;
+    public OreganoCircle[] circleList;
+    public GameObject circlePrefab;
 
     // Use this for initialization
     void Start () {
@@ -101,7 +104,7 @@ public class Minigames : MonoBehaviour {
         currentQuandrant[quadrant] = true;
 
 
-        print(inputDirection);                                                                                      // Normalize input only if it exceeds the maximum for either axis alone.
+        print(inputDirection);  // Normalize input only if it exceeds the maximum for either axis alone.
         if (inputDirection.magnitude >= .02)
         {
             quadrant = 4;
@@ -112,6 +115,27 @@ public class Minigames : MonoBehaviour {
     public int OregenoStun()
     {
         oreganoMinigame.gameObject.SetActive(true);
+        
         return score;
     }
+    
+    public void generateCircles()
+    {
+        //Determines the Length of the List
+        //int num = (int)Random.Range(min, max);
+        int num = 3;
+        circleList = new OreganoCircle[num];
+
+        //Spawns list.length number of enemies
+        for (int i = 0; i < num; i++)
+        {
+            //Grabs relevant component of Chef
+            Vector3 temp = new Vector3((i + 1.5f)* 1.6f, 0f, 0f);
+            circleList[i] = Instantiate(circlePrefab, temp, Quaternion.identity).GetComponent<OreganoCircle>();
+
+            //Sets enemy instance to be child of this object
+            circleList[i].gameObject.transform.SetParent(gameObject.transform, true);
+        }
+    }
+    
 }

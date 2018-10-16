@@ -154,6 +154,7 @@ public class GameManager : MonoBehaviour {
                     else if (whichGame == 3)
                     {
                         mg.OregenoStun();
+                        //mg.generateCircles();
                         combatText.text = "Press X on time!";
                     }
 

@@ -22,7 +22,7 @@ public class OreganoCircle : MonoBehaviour
 
 	public int score;
 	
-	//public Minigames mg;
+	public Minigames mg;
 	
 	
 	// Use this for initialization
@@ -98,6 +98,7 @@ public class OreganoCircle : MonoBehaviour
 		neutralCirc.sprite = neutralityCircle;
 		inputCount = 3;
 		butResult = 0;
+		Destroy(this.gameObject);
 	}
 
 

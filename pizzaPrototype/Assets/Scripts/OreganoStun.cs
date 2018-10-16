@@ -19,6 +19,7 @@ public class OreganoStun : MonoBehaviour
 	public GameObject oreganoMinigame;
 	
 	public GameManager gm;
+	public Minigames mg;
 
 	// Use this for initializatio
 
@@ -64,11 +65,16 @@ public class OreganoStun : MonoBehaviour
 				//we must cancel the invoke, because it will continue to invoke even after the object is deactivated 
 				CancelInvoke();
 
-				OreganoCircle[] circles = oreganoMinigame.GetComponentsInChildren<OreganoCircle>();
+				OreganoCircle[] circles = mg.GetComponentsInChildren<OreganoCircle>();
 				Debug.Log(circles.Length);
 
 				foreach (OreganoCircle c in circles)
 				{
+					if (c.butResult == 1)
+					{
+						mg.score += 5;
+					}
+
 					c.Reset();
 					Debug.Log(c.butDead);
 				}
